@@ -1,0 +1,74 @@
+<div id="statisticsContainer"  class="h-100 w-100 p-1"  style="font-family: Georgia, 'Times New Roman', Times, serif;">
+    <div id="statistics-config" class="form-check">
+        <h1 style="font-size: 16px"> Statistics</h1>
+        <div style="font-size: 14px;"> 
+            <span>Please select which spatial units to query:</span><br>
+            <span style="text-decoration: underline; color:rgb(8, 99, 99)">Based on {{ spatialUnits }}</span><br>
+            <input type="radio" v-model="spatialUnits" id="town" value="Administrative Districts" checked/><label for="town">Administrative Districts</label><br>
+            <input type="radio" v-model="spatialUnits" id="village" value="Villages" /><label for="village">Villages</label>
+            <hr style="border: 1px solid rgb(160, 160, 160);">
+            <div>
+                Click the following links to query the detailed information of the entire city.<br>
+                <span style="cursor: pointer;color:rgb(8, 99, 99);" v-on:click="showpopChart"><i class="fas fa-check-circle"></i>   Population Growth </span> <br>
+                <span style="cursor: pointer;color:rgb(8, 99, 99);" v-on:click="showlulcChart"><i class="fas fa-check-circle"></i>   Land Cover Changes </span>
+            </div>
+        </div>
+    </div>
+    <div id="pop-all-chart-container" style="border-style: solid;border-width: 1px; border-radius:5px; border-color:azure;position:fixed; padding:5px; right:20px; bottom:310px;width:350px;" v-show="toShowpopCharts">
+        <div style="color: azure;"><i style="float: right;cursor: pointer" class="far fa-times-circle" aria-hidden="true" v-on:click="closepopChart"></i></div>
+        <div><canvas id="pop-all-chart" style="height:150px"></canvas></div>
+    </div>
+    <div id="lulc-chart-container" style="border-style: solid;border-width: 1px; border-radius:5px; border-color:azure;position:fixed; padding:5px; right:20px; bottom:40px;width:350px;" v-show="toShowlulcCharts">
+        <div style="color: azure;"><i style="float: right;cursor: pointer" class="far fa-times-circle" aria-hidden="true" v-on:click="closelulcChart"></i></div>
+        <div><canvas id="lulc-chart" style="height:200px"></canvas></div>
+    </div>
+    <div id="statistics-info" class="statistics-info-container" v-if="toShowSelectInfo">
+        <div class="statistics-info-container-header">
+            <div v-on:click="closeSelectInfo"><i style="color: azure;" class="far fa-times-circle" aria-hidden="true"></i></div>
+        </div>
+        <div style="padding: 10px;">
+            <div id="feature-info">
+                <h5 style="font-size: 16px; font-weight: bold;">Feature Information</h5>
+                <div id="statistics-info-content" style="font-size: 14px;"></div>
+            </div>         
+            <div id="district-info">
+                <ul style="font-size: 13px;" class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button style="padding: 7px;" class="nav-link active" id="pop-tab" data-bs-toggle="tab" data-bs-target="#popInfo" type="button" role="tab" aria-controls="popInfo" aria-selected="true">Population</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button style="padding: 7px;" class="nav-link" id="sdg-tab" data-bs-toggle="tab" data-bs-target="#sdgInfo" type="button" role="tab" aria-controls="sdgInfo" aria-selected="true">SDG Indicies</button>
+                    </li>
+                    <li class="nav-item" role=""presentation>
+                        <button style="padding: 7px;" class="nav-link" id="sprawl-tab" data-bs-toggle="tab" data-bs-target="#sprawlInfo" type="button" role="tab" aria-controls="sprawlInfo" aria-selected="false">Urban Expansion</button>         
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="popInfo" role="tabpanel" aria-labelledby="pop-tab">
+                        <div v-if ="toShowPOPalert">
+                            <span style="font-size: 13px">Population data only investigated at administrative district level. Please refer to another spatial unit.</span>
+                        </div>
+                        <div v-if ="toShowPOPContent">
+                            <span style="font-size: 13px">Select a feature on the map to idenify population.</span> 
+                            <div style="width: auto; height: auto;" id="pop-chart-container"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="sdgInfo" role="tabpanel" aria-labelledby="sdg-tab">
+                        <div v-if ="toShowSDGalert">
+                            <span style="font-size: 13px">SDG Indicies are only calculated at administrative district level. Please refer to another spatial unit.</span>
+                        </div>
+                        <div v-if ="toShowSDGContent">
+                            <span style="font-size: 13px">Select a feature on the map to identify SDG Indicies.</span> 
+                            <div style="width: auto; height: auto;" id="aapdea-chart-container"></div>
+                            <div style="width: auto; height: auto;" id="lue-chart-container"></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="sprawlInfo" role="tabpanel" aria-labelledby="sprawl-tab">
+                        <span style="font-size: 13px">Select a feature on the map to identify expansion information.</span> 
+                        <div style="width: auto; height: auto;" id="entropy-chart-container"></div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+</div>

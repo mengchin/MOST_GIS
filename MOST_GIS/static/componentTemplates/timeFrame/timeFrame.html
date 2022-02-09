@@ -1,0 +1,32 @@
+<div id="timeContainer"  class="h-100 w-100 p-1"  style="font-family: Georgia, 'Times New Roman', Times, serif;">
+    <div style="padding:15px;"class="layerGroup" id="style-3">        
+        <label style="font-size: 14px;">Drag the slide bar to see the temporal changes.</label>
+        <h1 style="font-size: 16px;">Land Cover and Land Use </h1>
+        <div role="group" aria-label="Animation controls">
+            <button id="load-lulc" class="btn btn-outline-secondary btn-sm" v-on:click="checkAnimatedLULC" >Load</button>
+            <div> 
+                <input type="range" min="0" max="6" value="0" class="timeslider" id="myRange" v-model="LULCdateRange" @change="playLULC">
+                <p style="font-size: 14px;">Date: <span id="date_value">{{ dates[LULCdateRange] }}</span></p>
+            </div>
+        </div>
+        <hr style="border: 0.5x solid rgb(163, 163, 163);">
+        <h1 style="font-size: 16px;"> Growth of Built-up Areas </h1>
+        <div role="group" aria-label="Animation controls">
+            <button id="load-lulc" class="btn btn-outline-secondary btn-sm" v-on:click="checkAnimatedBuiltup">Load</button>
+            <div> 
+                <input type="range" min="0" max="6" value="0" class="timeslider" id="myRange" v-model="BuiltupdateRange" @change="playBuiltup">
+                <p style="font-size: 14px;">Date: <span id="date_value">{{ dates[BuiltupdateRange] }}</span></p>
+            </div>
+        </div>
+        <!--div role="group" aria-label="Animation controls">
+            <button id="load-built" class="btn btn-outline-secondary btn-sm" v-on:click="checkAnimatedBuiltup">Load</button>
+            <button id="play-built" class="btn btn-outline-secondary btn-sm" v-on:click="playBuiltup"><i class="fas fa-play"></i></button>
+            <button id="pause-built" class="btn btn-outline-secondary btn-sm"v-on:click="stopBuiltup"><i class="fas fa-pause"></i></button>
+            <p style="font-size: 14px;">Date: <span id="date_value">{{ updateBuiltupDate }}</span></p>
+        </div--->
+    </div>
+    
+    <!---Legend-->
+    <div style="position: fixed;bottom: 25px; right: 20px;"><img id='builtup-legend'></div>
+
+</div>

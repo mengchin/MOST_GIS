@@ -1,0 +1,42 @@
+<div id="functionContainer"  class="h-100 w-100 p-1">
+    <div class="form-check" style="font-family: Georgia, 'Times New Roman', Times, serif; padding-right: 20px;">    
+        <!---div id ="measuretype" class="btn-group btn-group-sm">
+            <button type="button" value="length" id="measureLengthBtn" class="btn btn-outline-secondary btn-sm" v-on:click="spaceMeasureFunction('Area')">Measure Length</button>
+            <button type="button" value="area" id="measureAreaBtn" class="btn btn-outline-secondary btn-sm" v-on:click="spaceMeasureFunction('Polygon')">Measure Area</button>
+        </div---->
+        <!---div style="position:absolute;z-index:99;right:50px;top:50px;">  
+            <div style="cursor: pointer;" @click="spaceMeasureFunction('LineString')"> Measure Length</div> 
+            <div style="cursor: pointer;"@click="spaceMeasureFunction('Polygon')"> Measure Area</div>  
+        </div--->  
+        <div id= "measure" >
+            <h1 style="font-size: 18px;"> Measure Tools</h1>
+            <!--label class="checkbox"><input type="checkbox" id="geodesic" />Geodesic</label--->
+            <form>
+              <div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="measurement" value="Polygon" checked> Area
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="measurement" value="LineString"> Distance
+                  </label>
+                </div>
+              </div>
+            </form>
+        </div>
+        <hr> 
+        <div id= "Result">
+            <h1 style="font-size: 18px;"> Measurement Result</h1>
+            <form>
+                <div>
+                    <samp id="js-result">n/a</samp>
+                </div>
+            </form>
+        </div>           
+        <button class="btn btn-outline-dark btn-sm" id="clearMeasureDrawBtn">Clear All Measurements</button>
+    </div>
+</div>

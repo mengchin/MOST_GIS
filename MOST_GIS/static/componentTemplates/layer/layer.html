@@ -1,0 +1,90 @@
+<div id="LayerContainer" class="h-100 w-100 p-1">
+    <div class="form-check layerGroup" id="style-3">
+        <h1 style="font-size: 18px; font-weight: bold;">Layers</h1>
+        <div id= "LULC Maps" style="font-size: 13px;">
+          <!---LULC Maps-->          
+          <div>
+            <label style="font-size: 15px; font-weight: bold;"> Land Use and Land Cover</label>            
+            <label value="LULC">LULC Maps in different periods</label><button id="arrow1" style="background-color: transparent; width: 5px; border-color: transparent;"  v-on:click="toogleLULC"><i class="fa fa-chevron-circle-down"></i></button>
+            <div style="padding-left: 15px;" v-if="toShowLULC">
+              <label value="LULC_1985">LULC Map 1985</label> 
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="LULC1985Checked">                                                                                                                              
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="LULCOpacity1985">                  
+              <br>
+              <label value="LULC_1990">LULC Map 1990</label>
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="LULC1990Checked">
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="LULCOpacity1990">            
+              <br>    
+              <label value="LULC_1995">LULC Map 1995</label>  
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="LULC1995Checked"> 
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="LULCOpacity1995"> 
+              <br> 
+              <label value="LULC_2000">LULC Map 2000</label> 
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="LULC2000Checked">                                                                                                                              
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="LULCOpacity2000">                  
+              <br>
+              <label value="LULC_2005">LULC Map 2005</label>
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="LULC2005Checked">
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="LULCOpacity2005">            
+              <br>    
+              <label value="LULC_2010">LULC Map 2010</label>  
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="LULC2010Checked"> 
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="LULCOpacity2010"> 
+              <br>    
+              <label value="LULC_2015">LULC Map 2015</label>  
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="LULC2015Checked"> 
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="LULCOpacity2015">          
+            </div>
+            <hr style="border: 0.5x solid rgb(163, 163, 163);">
+            <label style="font-size: 15px; font-weight: bold;"> Satellite Image</label>            
+            <label value="Image">Snapshots in different periods</label><button id="arrow2" style="background-color: transparent; width: 5px; border-color: transparent;"  v-on:click="toogleImage"><i class="fa fa-chevron-circle-down"></i></button>           
+             <div style="padding-left: 15px;" v-if="toShowImage">
+              <label value="Image_1985">Satellite Image 1985</label> 
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="Image1985Checked">                                                                                                                              
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="ImageOpacity1985">                  
+              <br>
+              <label value="Image_1990">Satellite Image 1990</label>
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="Image1990Checked">
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="ImageOpacity1990">            
+              <br>    
+              <label value="Image_1995">Satellite Image 1995</label>  
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="Image1995Checked"> 
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="ImageOpacity1995"> 
+              <br> 
+              <label value="Image_2000">Satellite Image 2000</label> 
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="Image2000Checked">                                                                                                                              
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="ImageOpacity2000">                  
+              <br>
+              <label value="Image_2005">Satellite Image 2005</label>
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="Image2005Checked">
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="ImageOpacity2005">            
+              <br>    
+              <label value="Image_2010">Satellite Image 2010</label>  
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="Image2010Checked"> 
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="ImageOpacity2010"> 
+              <br>    
+              <label value="Image_2015">Satellite Image 2015</label>  
+              <input class="form-check-input" type="checkbox" style="width:12px; float:left;" v-model="Image2015Checked"> 
+              <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="ImageOpacity2015">          
+            </div>
+          </div> 
+        </div>
+        <hr style="border: 0.5x solid rgb(163, 163, 163);">
+        <div id= "Others" style="font-size: 13px;">
+          <div>            
+            <label style="font-size: 15px; font-weight: bold;">Other Data</label><button style="background-color: transparent; width: 5px; border-color: transparent;"><i class="bi bi-caret-down-fill"></i></button>
+          </div>  
+          <div id= "otherLayer"  style="padding-left: 15px;">   
+            <label value="City">Administrative Districts Bouandaries</label> 
+            <input class="form-check-input" type="checkbox" style="width:12px; float:left;"  v-model="TownChecked">                                                                                                                              
+            <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="TownOpacity">  
+            <label value="Village">Village Bouandaries</label> 
+            <input class="form-check-input" type="checkbox" style="width:12px; float:left;"  v-model="VillageChecked">                                                                                                                              
+            <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="VillageOpacity">     
+            <!--label value="OrthoMap"> 0rthoImage</label> 
+            <input class="form-check-input" type="checkbox" v-model="OrthoChecked">                                                                                                                              
+            <input type="range" min="0" max="100" value="50" step="10"class="slider" v-model="OrthoOpacity"--->                       
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MOST Website</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.13.0-rc.2/jquery-ui.min.js" integrity="sha256-RQLbEU539dpygNMsBGZlplus6CkitaLy0btTCHcULpI=" crossorigin="anonymous"></script>
+        <!--css-->
+        <link rel="stylesheet" href="/static/css/main.css"> 
+        <link rel="shortcut icon" href="#" />
+        <!---bootstrap-->       
+        <script src="/static/js/bootstrap_js/bootstrap.bundle.js"></script>
+        <script src="/static/js/bootstrap_js/bootstrap.min.js"></script>
+        <script src="/static/js/bootstrap_js/bootstrap.js"></script>
+        <link rel="stylesheet" href="/static/css/bootstrap_css/bootstrap.css"> 
+        <link rel="stylesheet" href="/static/css/bootstrap_css/bootstrap-grid.css"> 
+        <link rel="stylesheet" href="/static/css/bootstrap_css/bootstrap-reboot.css"> 
+        <link rel="stylesheet" href="/static/css/bootstrap_css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="/static/css/bootstrap_css/bootstrap.rtl.min.css"> 
+        <!---script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script--->            
+        
+        <!--Fontawesome-->
+        <link href="/static/css/fontawesome/css/all.css" rel="stylesheet">         
+        
+        <!--Openlayers-->
+        <!---link rel="stylesheet" href="/static/js/openlayer/ol.css"> 
+        <script src="/static/js/openlayer/ol.js"></script--->
+        <link rel="stylesheet" href="https://openlayers.org/en/latest/css/ol.css" />
+        <script type="text/javascript" src="https://openlayers.org/en/latest/build/ol.js"></script>
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL,Object.assign"></script>
+
+        <!-- ol-ext -->
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.css" />
+        <script type="text/javascript" src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"></script>
+        <!---link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css" type="text/css">
+        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script--->        
+        
+        <!----jquery----->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        
+        <!--Vue JS-->
+        <!--script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script-->
+        <script src="https://unpkg.com/vuex@2.0.0"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/geojson-vt@3.2.0/geojson-vt.js"></script>
+        
+        <!---ChartJS-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+
+        <!--MathJX-->
+        <script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML" type="text/javascript"></script>
+        <script>MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}})</script>  
+        </head>
+    <body>
+        <div id= "app" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+            <!---Navbar-->
+            <div id="navbar" class="navbar d-flex align-items-center justify-content-left">
+                <div class='navbar-content'>
+                    <h1 style="font-weight: bold;">
+                       URBAN EXPANSION DETECTION SYSTEM
+                    </h1>
+                </div>
+                <div style="position:absolute; right: 20px;">
+                    <button class="btn btn-sm btn-light" v-on:click="showHelpWindow"><i class="fas fa-question-circle"></i>  Help</button>
+                </div>
+            </div>
+            <!--Help Window-->
+            <div id="help-window" class="help-container d-print-none" v-if= "toShowHelpWindow">
+                <div class="help-container-header">
+                    <div v-on:click="closeHelpWindow"><i style="color: azure; cursor: pointer;" class="far fa-times-circle" aria-hidden="true"></i></div>
+                </div>
+                <div class="help-content" id="style-1" style="font-size: 14px;  line-height: 1.5;" >
+                    <h1 style="font-weight: bold;font-size: 16px"><i class="fas fa-question-circle" aria-hidden="true"></i>    Help and Instructions</h1>
+                    <p>
+                        <span style="font-weight: bold;font-size: 15px">Aims</span><br>
+                        This website aims to make SDG Indices more accsessible, which involves the information of population, Land Use Efficiency(LUE), Abstract Achieved Population Density in Expansion Areas(AAPDEA) to provide comparative analysis at different levels.
+                    </p>
+                    <p>
+                        <span style="font-weight: bold;font-size: 15px;">User Guide</span><br>
+                        <p>
+                            <span style="font-size: 15px;"><u>User Interface</u></span><br>
+                            The following figure shows the overall interface of this website.<br>
+                            (1)  Zoom controls    (2)  Coordinates of mouse pointer and scale bar <br>
+                            (3)  Map canvas    (4) Help window    (5)  Function toolbar    (6)  Function windows
+                            <img style="width: 600px;" src="/static/image/basic/interface.png" alt="User Interface"><br>
+                        </p>
+                        <hr style="border: 1px solid rgb(160, 160, 160);">
+                        <span style="font-size: 15px;"><u> Function Toolbar</u></span>                      
+                        <table>
+                            <tr>
+                              <th>Tool Function</th>
+                              <th>Description</th>
+                            </tr>
+                            <tr>
+                              <td style="width: 25%;"><i class="fas fa-map"></i>    Basemap Switcher:</td>
+                              <td>Used for changing different base maps.</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;"><i class="fas fa-bookmark"></i>    Bookmarks:</td>
+                                <td>Users can save the current view as spatial bookmarks for revisiting</td>
+                              </tr>
+                            <tr>
+                              <td style="width: 25%;"><i class="fas fa-layer-group"></i>    Layer Groups:</td>
+                              <td>Differnt layers of LULC Maps, satellite images and spatial boundaries are provided in this page. Layer opacity can also be configured.</td>
+                            </tr>
+                            <tr>
+                              <td style="width: 25%;"><i class="far fa-calendar-alt"></i>  Temporal Slider:</td>
+                              <td>Different periods of LULC Maps and Built-up areas are shown in this page, while users can access this information through an interactive slide bar.</td>
+                            </tr>
+                            <tr>
+                              <td style="width: 25%;"><i class="fa fa-chart-area"></i>  Statistics:</td>
+                              <td>
+                                  - Population: Population data is obtained from the Civil Affairs Bureau of the Kaohsiung City Government, which is investigated based on administrative districts level. <br>
+                                  - SDG Indices: Two SDG indices are implemented in this visualization tool. <br>
+                                  <ol>
+                                        <li>
+                                            Abstract Achieved Population Density in Expansion Areas (AAPDEA)
+                                            <p>$$ AAPEDA= {Pop_{t+n}-Pop_{t}/Urb_{t+n}-Urb_{t}} $$</p>
+                                        </li>
+                                        <li>                               
+                                            Land Use Efficiency (LUE) is the ratio of the land consumption rate (LCR) to the population growth rate (PGR).
+                                            <p>$$LCR= {ln(Urb_{t+n})-ln(Urb_{t}) \over Δt}$$</p>
+                                            <p>$$PGR= {ln(Pop_{t+n})-ln(Pop_{t}) \over Δt}$$</p>
+                                            <p>$$LUE= {LCR \over PGR}$$</p>
+                                        </li>
+                                        <li>
+                                            Urban Expansion: Shannon Entropy(H) is calculated to represent urban expansion patterns, by measuring the changing balance between each land cover. <br>
+                                            <p>$${H=-\sum _{i}p_{i}\log _{b}p_{i}}$$</p>
+                                        </li>
+                                  </ol>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="width: 25%;"><i class="fas fa-eraser"></i>  Clear All Layers:</td>
+                              <td>  All added layers can be clear through this button. </td>
+                            </tr>
+                            <tr>
+                              <td style="width: 25%;"><i class="fas fa-print"></i>  Print Map:</td>
+                              <td>  The current map view can be print by clicking this button.</td>
+                            </tr>
+                          </table>
+                    </p>
+                    <hr style="border: 1px solid rgb(160, 160, 160);">
+                    <p>
+                        <span style="font-weight: bold;"><u>Acknowlegements</u></span><br>
+                        <i>This website is funded by the Ministry of  Technology (MOST) in Taiwan. </i>                   
+                    </p>
+                </div>
+            </div>
+            <!--Map Coordinate-->
+            <div class="map-coordinate-container">
+                Longitude, Latitude: <span id="mouse-position"></span>
+            </div>       
+            <!--Loading-->
+            <div id="loading">
+                <div class="loadingContent">
+                </div>
+            </div>   
+            <!---SideBar-->    
+            <div class="panel">  
+                <div class="d-print-none">
+                    <button  v-on:click="showBaseMapSwitcher" style="height: 35px;width: 35px; font-size: 17px;" type="button" class="btn btn-outline-light btn-sm" data-toggle="tooltip" data-placement="left" title="Change Basemaps">
+                        <i class="fas fa-map"></i>
+                    </button>
+                    <button  v-on:click="showBookmarks" style="height: 35px;width: 35px;font-size: 17px;" type="button" class="btn btn-outline-light btn-sm" data-toggle="tooltip" data-placement="left" title="Bookmarks">
+                        <i class="fas fa-bookmark"></i>
+                    </button>
+                    <button  v-on:click="changeCurrentComponentName('layerComponent')" style="height: 35px;width: 35px; font-size: 17px;" type="button" class="btn btn-outline-light btn-sm" data-toggle="tooltip" data-placement="left" title="Layers">
+                        <i class="fas fa-layer-group"></i>
+                    </button>
+                    <button  v-on:click="changeCurrentComponentName('timeComponent')" style="height: 35px;width: 35px;font-size: 17px;"type="button" class="btn btn-outline-light btn-sm" data-toggle="tooltip" data-placement="left" title="Temporal Changes">
+                        <i class="far fa-calendar-alt"></i>
+                    </button>
+                    <!--button v-on:click="changeCurrentComponentName('functionComponent')" style="height: 35px;width: 35px; font-size: 17px;" type="button" class="btn btn-outline-light btn-sm" data-toggle="tooltip" data-placement="left" title="Measure Tools">
+                        <i class="fa fa-ruler"></i> 
+                    </button--->
+                    <button v-on:click="showStatistics" style="height: 35px;width: 35px; font-size: 17px;" type="button" class="btn btn-outline-light btn-sm" data-toggle="tooltip" data-placement="left" title="Statistics Tools">
+                        <i class="fa fa-chart-area"></i> 
+                    </button>
+                    <button v-on:click="ClearAllLayer" style="height: 35px;width: 35px;font-size: 17px;" type="button" class="btn btn-outline-light btn-sm" data-toggle="tooltip" data-placement="left" title="Clear All Layers">
+                        <i class="fas fa-eraser"></i>
+                    </button>
+                    <button v-on:click="PrintMap" style="height: 35px;width: 35px;font-size: 17px;" type="button" class="btn btn-outline-light btn-sm" data-toggle="tooltip" data-placement="left" title="Print Map">
+                        <i class="fas fa-print"></i>
+                    </button>
+                </div>
+
+                <!--old script-->
+                <!---div v-on:click="showBaseMapSwitcher" class="panel-function d-print-none" >
+                    <div class="function d-flex" style="font-size: 20px; padding:5px;">
+                        <div class="w-100 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-map"></i>
+                        </div>
+                    </div>                    
+                </div> 
+                <div v-on:click="showBookmarks" class="panel-function d-print-none" >
+                    <div class="function d-flex" style="font-size: 20px; padding:5px;">
+                        <div class="w-100 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-bookmark"></i>
+                        </div>
+                    </div>                    
+                </div> 
+                <div v-on:click="changeCurrentComponentName('layerComponent')" class="panel-function d-print-none" >
+                    <div class="function d-flex" style="font-size: 20px; padding:5px;">
+                        <div class="w-100 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                    </div>                    
+                </div> 
+                <div v-on:click="changeCurrentComponentName('timeComponent')" class="panel-function d-print-none" >
+                    <div class="function d-flex" style="font-size: 20px; padding:5px;">
+                        <div class="w-100 d-flex justify-content-center align-items-center"> 
+                            <i class="far fa-calendar-alt"></i> 
+                        </div>
+                    </div>                    
+                </div>   
+                <div v-on:click="changeCurrentComponentName('functionComponent')" class="panel-function d-print-none" >
+                    <div class="function d-flex" style="font-size: 20px; padding:5px;">
+                        <div class="w-100 d-flex justify-content-center align-items-center">
+                            <i class="fa fa-ruler"></i> 
+                        </div>
+                    </div>                 
+                </div>   
+                <div v-on:click="changeCurrentComponentName('statisticsComponent')" class="panel-function d-print-none" >
+                    <div class="function d-flex" style="font-size: 20px; padding:5px;">
+                        <div class="w-100 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-chart-area"></i>
+                        </div>
+                    </div>         
+                </div>       
+                <div v-on:click="ClearAllLayer" class="panel-function d-print-none" >
+                    <div class="function d-flex" style="font-size: 20px; padding:5px;">
+                        <div class="w-100 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-eraser"></i>
+                        </div>
+                    </div>         
+                </div>  
+                <div v-on:click="PrintMap" class="panel-function d-print-none" >
+                    <div class="function d-flex" style="font-size: 20px; padding:5px;">
+                        <div class="w-100 d-flex justify-content-center align-items-center">
+                            <i class="fas fa-print"></i>
+                        </div>
+                    </div>         
+                </div---->  
+                <!--BaseMap Switcher Window-->  
+                <div class="panel-info-container d-print-none" v-show="toShowBaseMapSwitcher">
+                    <div class="info-container-header">
+                        <div v-on:click="closeBasemapSwitcher"><i style="color: azure;" class="far fa-times-circle" aria-hidden="true"></i></div>
+                    </div>              
+                    <div id= "BaseMapSwitcher" style="font-family: Georgia;" class="form-check">
+                        <h1 style="font-size: 18px;">Switch Base Map</h1>
+                        <div class = "baseMap" style="font-size: 13px;">
+                            <input type="radio" name="baselayerButton" value="OSM" checked>
+                            <label for="OpenStreet">OpenStreet Map</label>
+                            <br>
+                            <input type="radio" name="baselayerButton" value="CartoLight">
+                            <label for="CartoLight">CartoDB Light</label>
+                            <br>
+                            <input type="radio" name="baselayerButton" value="CartoDark">
+                            <label for="CartoDark">CartoDB Dark</label>
+                            <br>
+                            <input type="radio" name="baselayerButton" value="Stamen">
+                            <label for="Stamen">Stamen Terrain</label>
+                        </div>
+                    </div>      
+                </div>  
+                <!--Bookmarks Configuration Window-->
+                <div class="panel-info-container d-print-none" v-show="toShowBookmarks">
+                    <div class="info-container-header">
+                        <div v-on:click="closeBookmarks"><i style="color: azure;" class="far fa-times-circle" aria-hidden="true"></i></div>
+                    </div>              
+                    <div id="style-3" style="height:100px;overflow:auto; padding:5px;">
+                        <div class="form-check">
+                            <h1 style="font-size: 16px;">Bookmarks</h1>
+                            <div id = "bookmarks">
+                                <div style="display:inline-flex">
+                                    <input type="text" style="width: 60px;" v-model='inputBookMark'>
+                                    <button class="btn btn-light btn-sm" v-on:click="addBookMarks"><i class="fas fa-plus-square"></i> Add</button>
+                                    &nbsp;&nbsp;
+                                    <div v-if="bookmarks.length !=0">
+                                        <button class="btn btn-light btn-sm" v-on:click="clearBookMarks"><i class="fas fa-eraser"></i> Clear</button>
+                                    </div>
+                                </div>
+                                <div id="bookmark-list" style="padding-top: 10px;"> 
+                                  <p v-for="(item,index) in bookmarkName">
+                                    {% verbatim %}
+                                        {{index+1}}.{{item}}  
+                                    {% endverbatim %}                     
+                                    <button class="btn btn-light btn-sm" v-on:click="zoomToBookMarks(index)"><i class="fas fa-search-plus"></i></button>
+                                    <button class="btn btn-light btn-sm" v-on:click="removeBookMarks(index)"><i class="fas fa-backspace"></i></button>
+                                  </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
+                </div> 
+                <!--Statistics Information Window-->  
+                <div id="statisticsContainer" class="panel-info-container d-print-none" style="font-family: Georgia, 'Times New Roman', Times, serif;" v-show="toShowStatistics">
+                    <div class="info-container-header">
+                        <div v-on:click="closeStatistics"><i style="color: azure;" class="far fa-times-circle" aria-hidden="true"></i></div>
+                    </div>    
+                    <div id="statistics-config" class="form-check">
+                        <h1 style="font-size: 16px"> Statistics</h1>
+                        <div style="font-size: 14px;"> 
+                            <span>Please select which spatial units to query:</span><br>
+                            <span style="text-decoration: underline; color:rgb(8, 99, 99)">Based on {{ spatialUnits }}</span><br>
+                            <input type="radio" v-model="spatialUnits" id="town" value="Administrative Districts" checked/><label for="town">Administrative Districts</label><br>
+                            <input type="radio" v-model="spatialUnits" id="village" value="Villages" /><label for="village">Villages</label>
+                            <hr style="border: 1px solid rgb(160, 160, 160);">
+                            <div>
+                                Click the following links to query the detailed information of the entire city.<br>
+                                <span style="cursor: pointer;color:rgb(8, 99, 99);" v-on:click="showpopChart"><i class="fas fa-check-circle"></i>   Population Growth </span> <br>
+                                <span style="cursor: pointer;color:rgb(8, 99, 99);" v-on:click="showlulcChart"><i class="fas fa-check-circle"></i>   Land Cover Changes </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pop-all-chart-container" style="border-style: solid;border-width: 1px; border-radius:5px; border-color:azure;position:fixed; padding:5px; right:20px; bottom:310px;width:350px;" v-show="toShowpopCharts">
+                        <div style="color: azure;"><i style="float: right;cursor: pointer" class="far fa-times-circle" aria-hidden="true" v-on:click="closepopChart"></i></div>
+                        <div><canvas id="pop-all-chart" style="height:150px"></canvas></div>
+                    </div>
+                    <div id="lulc-chart-container" style="border-style: solid;border-width: 1px; border-radius:5px; border-color:azure;position:fixed; padding:5px; right:20px; bottom:40px;width:350px;" v-show="toShowlulcCharts">
+                        <div style="color: azure;"><i style="float: right;cursor: pointer" class="far fa-times-circle" aria-hidden="true" v-on:click="closelulcChart"></i></div>
+                        <div><canvas id="lulc-chart" style="height:200px"></canvas></div>
+                    </div>
+                    <div id="statistics-info" class="statistics-info-container" v-if="toShowSelectInfo">
+                        <div class="statistics-info-container-header">
+                            <div v-on:click="closeSelectInfo"><i style="color: azure;" class="far fa-times-circle" aria-hidden="true"></i></div>
+                        </div>
+                        <div style="padding: 10px;">
+                            <div id="feature-info">
+                                <h5 style="font-size: 16px; font-weight: bold;">Feature Information</h5>
+                                <div id="statistics-info-content" style="font-size: 14px;"></div>
+                            </div>         
+                            <div id="district-info">
+                                <ul style="font-size: 13px;" class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                      <button style="padding: 7px;" class="nav-link active" id="pop-tab" data-bs-toggle="tab" data-bs-target="#popInfo" type="button" role="tab" aria-controls="popInfo" aria-selected="true">Population</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button style="padding: 7px;" class="nav-link" id="sdg-tab" data-bs-toggle="tab" data-bs-target="#sdgInfo" type="button" role="tab" aria-controls="sdgInfo" aria-selected="true">SDG Indices</button>
+                                    </li>
+                                    <li class="nav-item" role=""presentation>
+                                        <button style="padding: 7px;" class="nav-link" id="sprawl-tab" data-bs-toggle="tab" data-bs-target="#sprawlInfo" type="button" role="tab" aria-controls="sprawlInfo" aria-selected="false">Urban Expansion</button>         
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="popInfo" role="tabpanel" aria-labelledby="pop-tab">
+                                        <div v-if ="toShowPOPalert">
+                                            <span style="font-size: 13px">Population data only investigated at administrative district level. Please refer to another spatial unit.</span>
+                                        </div>
+                                        <div v-if ="toShowPOPContent">
+                                            <span style="font-size: 13px">Select a feature on the map to idenify population.</span> 
+                                            <div style="width: auto; height: auto;" id="pop-chart-container"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="sdgInfo" role="tabpanel" aria-labelledby="sdg-tab">
+                                        <div v-if ="toShowSDGalert">
+                                            <span style="font-size: 13px">SDG Indices are only calculated at administrative district level. Please refer to another spatial unit.</span>
+                                        </div>
+                                        <div v-if ="toShowSDGContent">
+                                            <span style="font-size: 13px">Select a feature on the map to identify SDG Indices.</span> 
+                                            <div style="width: auto; height: auto;" id="aapdea-chart-container"></div>
+                                            <div style="width: auto; height: auto;" id="lue-chart-container"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="sprawlInfo" role="tabpanel" aria-labelledby="sprawl-tab">
+                                        <span style="font-size: 13px">Select a feature on the map to identify expansion information.</span> 
+                                        <div style="width: auto; height: auto;" id="entropy-chart-container"></div>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                </div>  
+                <!--SideBar Function Window-->     
+                <div class="panel-info-container d-print-none" v-if="toShowPanelInfoContainer">
+                    <div class="info-container-header">
+                        <div v-on:click="closeFunctionPanel"><i style="color: azure;" class="far fa-times-circle" aria-hidden="true"></i></div>
+                    </div>
+                    <component v-bind:is="currentComponentName"></component>
+                </div>
+
+            </div>
+            <!--Popup-->
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>              
+                <div id="popup-content" style="font-size: 13px;"></div>
+                <ul style="font-size: 12px;" class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="pop-tab" data-bs-toggle="tab" data-bs-target="#popInfo" type="button" role="tab" aria-controls="popInfo" aria-selected="true">Population</button>
+                    </li>
+                    <li class="nav-item" role=""presentation>
+                        <button class="nav-link" id="sprawl-tab" data-bs-toggle="tab" data-bs-target="#sprawlInfo" type="button" role="tab" aria-controls="sprawlInfo" aria-selected="false">Expansion</button>         
+                    </li>
+                </ul>
+                <div class="tab-pane fade show active" id="popInfo" role="tabpanel" aria-labelledby="pop-tab"></div>
+                <div class="tab-pane fade show active" id="sprawlInfo" role="tabpanel" aria-labelledby="sprawl-tab"></div>
+            </div>
+
+            <!---Map-->
+            <div id="map" class="map"></div>    
+
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-i18n@8"></script>
+
+    </body>
+    <!-----js------>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>                                                                                                                                                                                                                                                                                         
+    <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+    <script src="/static/js/main.js"></script>
+</html>
