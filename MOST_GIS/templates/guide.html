@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Tutorial</title>
+
+        <!--Customized JS and CSS-->
+        <link href="/static/css/guide.css" rel="stylesheet">         
+
+        <!--Fontawesome-->
+        <link href="/static/css/fontawesome/css/all.css" rel="stylesheet">         
+        
+        <!----jquery----->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                
+        <!--MathJX-->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>                  
+        
+    </head>
+    <body>
+        
+        <nav>
+            <ul>
+                <li style="padding-left: 20px;"><h1>Tutorial</h1></li>
+                <li><a href="#Interface"> Interface </a></li>
+                <li><a href="#Calculation"> Calculation </a></li>
+                <hr style="border: 1px solid rgb(160, 160, 160);">
+                <li style="padding-left: 30px;"><h2>Functions</h2></li>
+                <li><a href="#Basemap"><i class="fas fa-map"></i>&nbsp; Change Basemaps</a></li>
+                <li><a href="#Bookmarks"><i class="fas fa-bookmark"></i>&nbsp; Bookmarks</a></li>
+                <li><a href="#Layers"><i class="fas fa-layer-group"></i>&nbsp; Layers</a></li>
+                <li><a href="#TemporalChanges"><i class="far fa-calendar-alt"></i>&nbsp; Temporal Changes</a></li>
+                <li><a href="#Information"><i class="fa fa-info-circle"></i> &nbsp; Information</a></li>
+                <li><a href="#Clear"><i class="fas fa-eraser"></i> &nbsp; Clear All Layers</a></li>
+                <li><a href="#Print"><i class="fas fa-print"></i> &nbsp; Print Maps</a></li>            
+                <li><a href="{% url 'home' %}"> <<<   Back to Home</a></li>
+            </ul>
+            </nav>
+        <div id="#Intro" class="wrapper">
+            <section class="section">
+                <h4>Aims</h4>
+                <p>
+                    This website aims to make SDG Indices more accsessible, which involves the information of population, Land Use Efficiency(LUE), Abstract Achieved Population Density in Expansion Areas(AAPDEA) to provide comparative analysis at different levels.
+                </p>
+            </section>
+            <hr style="border: 1px solid rgb(160, 160, 160);">
+            <section id="Interface" class="section">
+                <h4>Interface</h4>
+                <p>
+                    The following figure shows the overall interface of this website.<br>
+                    (1)  Zoom controls    (2)  Coordinates of mouse pointer and scale bar <br>
+                    (3)  Map canvas    (4) Help window    (5)  Function toolbar    (6)  Function windows
+                    <img style="width: 600px;" src="/static/image/basic/interface.png" alt="User Interface"><br>
+                </p>
+            </section>
+            <hr style="border: 1px solid rgb(160, 160, 160);">
+
+            <section id="Calculation" class="section">
+                <h4>Calculation Formulas</h4>
+                <!--h5>Data</h5>
+                    <p>Population: Population data is obtained from the Civil Affairs Bureau of the Kaohsiung City Government, which is investigated based on administrative districts level.</p>
+                    <p>SDG Indices: Two SDG indices are implemented in this visualization tool, including AAPDEA and LUE. </p>
+                    <p>Urban Expansion: Shannon Entropy(H) is calculated to represent urban expansion patterns, by measuring the changing balance between each land cover.</p>
+                <h5>Formulas</h5--->
+                <ol>
+                      <li>
+                          Abstract Achieved Population Density in Expansion Areas (AAPDEA)
+                          $$ AAPEDA= {Pop_{t+n}-Pop_{t} \over Urb_{t+n}-Urb_{t}} $$
+
+                      </li>
+                      <br>
+                      <li>                               
+                          Land Use Efficiency (LUE) is the ratio of the land consumption rate (LCR) to the population growth rate (PGR).
+                          <p>$$LCR= {ln(Urb_{t+n})-ln(Urb_{t}) \over Δt}$$</p>
+                          <p>$$PGR= {ln(Pop_{t+n})-ln(Pop_{t}) \over Δt}$$</p>
+                          <p>$$LUE= {LCR \over PGR}$$</p>
+                      </li>
+                      <br>
+                      <li>
+                          Shannon Entropy(H) is calculated based on the proportion of each  land covers of specified year. <br>
+                          <p>$$p_i = {P_{type} \over P_{all}}$$</p>
+                          <p>$${H=-\sum _{i}p_{i}\log _{b}p_{i}}$$</p>
+                      </li>
+                </ol>
+            </section>
+            <hr style="border: 1px solid rgb(160, 160, 160);">
+            <section id="Basemap" class="section">
+                <h4>Change Basemaps</h4>
+                <p>Used for changing different base maps. Select the radio button for basemap switching.</p>
+                <img src="/static/image/tutorial/basemap_switcher.png"><br>
+                <br>
+                <table>
+                    <tr>
+                        <td>Open Street Map</td>
+                        <td><img src="/static/image/OpenstreetMap.png"></td>
+                        <td>Carto Light</td>
+                        <td><img src="/static/image/LightMap.png"></td>
+                    </tr>
+                    <tr>
+                        <td>Carto Dark</td>
+                        <td><img src="/static/image/DarkMap.png"></td>
+                        <td>Stamen Terrain</td>
+                        <td><img src="/static/image/TerrainMap.png"></td>
+                    </tr>
+                </table>
+            </section>
+            <hr style="border: 1px solid rgb(160, 160, 160);">
+            <section id="Bookmarks" class="section">
+                <h4>Bookmarks</h4>
+                <p>Users can save the current view as spatial bookmarks for revisiting.</p>
+                <ul>
+                    <li>
+                        <h5>Add bookmarks</h5>
+                        <p>
+                            Input the name of your bookmark and then click "<i class="fas fa-plus-square"></i>Add" to add a bookmark.
+                        </p>
+                        <img src="/static/image/tutorial/bookmark1.png">
+                    </li>
+                    <li> 
+                        <h5>Delete bookmarks</h5>
+                        <p>
+                            Click "<i class="fas fa-backspace"></i>" icon beside your bookmark to delete the added bookmark.<br>
+                            You can also click "<i class="fas fa-eraser"></i> Clear" to delete all bookmarks. 
+                        </p>
+                        <img src="/static/image/tutorial/bookmark2.png">
+                    </li>
+                    <li>
+                        <h5>Zoom to bookmarks</h5>
+                        Click "<i class="fas fa-search-plus"></i>" icon beside your bookmark to zoom to the scale and location of the bookmark.  
+                    </li>
+                </ul>
+            </section>
+            <hr style="border: 1px solid rgb(160, 160, 160);">
+            <section id="Layers" class="section">
+                <h4>Layers</h4>
+                <p>
+                    Differnt layers of LULC Maps, satellite images and spatial boundaries are provided in this page. Layer opacity can also be configured.
+                </p>
+                <p>
+                    Select the layer to add to the current map. The slider is used to set the transparency.
+                </p>
+                <p><img src="/static/image/tutorial/layers.png"> </p>
+                <p>A screenshot of the added layer.</p>
+                <p><img src="/static/image/tutorial/layers01.png"></p>              
+            </section>
+            <hr style="border: 1px solid rgb(160, 160, 160);">
+            <section id="TemporalChanges" class="section">
+                <h4>Temporal Changes</h4>
+                <p>Different periods of LULC Maps and Built-up areas are shown in this page, while users can access this information through an interactive slide bar.</p>
+                <ol>
+                    <li>
+                        <p>Load LULC map and Built-up Areas map tiles on the map.</p>
+                        <p><img src="/static/image/tutorial/temporal_load.png"></p>
+                    </li>
+                    <li>
+                        <p>Move the slidebar to see the temporal changes of different land covers.</p>
+                        <p>
+                            <img src="/static/image/tutorial/temp_1990.png">
+                            <img src="/static/image/tutorial/temp_1995.png">
+                        </p>
+                    </li>
+                </ol>
+            </section>
+            <hr style="border: 1px solid rgb(160, 160, 160);">
+            <section id="Information" class="section">
+                <h4>Information</h4>
+                <p> Users can click different features to check the SDG indicators. Define the spatial units before selection.</p>
+                <p><img src="/static/image/tutorial/information.png"></p>
+                <p> Click the hyperlink of "Population Growth" and "Land Cover Changes" to check the temporal changes of the overall city.</p>
+                <p><img src="/static/image/tutorial/change_all.png"></p>
+
+                <h5>Information Window: </h5>
+                <ol>
+                    <li>
+                        <p>Population</p>
+                        <p><img src="/static/image/tutorial/Population.png"></p>
+                    </li>
+                    <li>
+                        <p>SDG Indicies</p>
+                        <p><img src="/static/image/tutorial/SDG_indicies.png"></p>
+                    </li>
+                    <li>
+                        <p>Land Cover Change</p>
+                        <p><img src="/static/image/tutorial/entropy.png"></p>
+                    </li>
+                </ol>
+            </section>
+            <hr style="border: 1px solid rgb(160, 160, 160);">
+            <section id="Clear" class="section">
+                <h4>Clear All Layers</h4>
+                All added layers can be clear through the button of "<i class="fas fa-eraser"></i>". 
+            </section>
+            <hr style="border: 1px solid rgb(160, 160, 160);">
+            <section id="Print" class="section">
+                <h4>Print Maps</h4>
+                The current map view can be print by clicking this button.
+                <p><img src="/static/image/tutorial/printmap.png"></p>                          </section>
+
+
+        </div>
+
+    </body>   
+    <script>
+        MathJax = {
+            chtml: { displayAlign: 'left' }
+        };
+    </script>                                                                                                                                                                                                                                                                                                     
+</html>

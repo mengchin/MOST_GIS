@@ -13,6 +13,21 @@ from .models import LandcoverChange,LandcoverChangeRatio,EntropyTown,EntropyVill
 def index(request):
     return render(request, 'index.html')
 
+def index_tw(request):
+    return render(request, 'index_tw.html')
+
+def home(request):
+    return render(request, 'home.html')
+
+def home_tw(request):
+    return render(request, 'home_tw.html')
+
+def guide(request):
+    return render(request, 'guide.html')
+
+def guide_tw(request):
+    return render(request, 'guide_tw.html')
+    
 def LandCoverChange(request):
     data = serialize('json',LandcoverChange.objects.all(),
                     fields = ('year','builtup','barren','cultivated','water','vegetation'))
@@ -35,7 +50,7 @@ def EntropyVillageView(request):
 
 def AAPDEATownView(request):
     data = serialize('json',AapdeaTown.objects.all(),
-                    fields = ('towncode','period','aapdea'))
+                    fields = ('towncode','period','aapdea','townname'))
     return HttpResponse(data, content_type='application/json')
 
 def PopulationAllView(request):

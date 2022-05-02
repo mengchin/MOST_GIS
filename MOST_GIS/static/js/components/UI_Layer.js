@@ -1,7 +1,7 @@
 define([],function(){
     //載入html
     var layerComponentHtml = "";
-    var website_url = "http://192.168.50.69:7000/" 
+    var website_url = "http://10.232.234.228:7000/" 
     var loadHtml = function(){
         $.ajax({
             url: 'static/componentTemplates/layer/layer.html', 
@@ -367,7 +367,7 @@ define([],function(){
                 addLULC1985Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'LULC_1985'
                                  },
@@ -383,7 +383,7 @@ define([],function(){
                 addLULC1990Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'LULC_1990'
                                  },
@@ -399,7 +399,7 @@ define([],function(){
                 addLULC1995Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'LULC_1995'
                                  },
@@ -415,7 +415,7 @@ define([],function(){
                 addLULC2000Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'LULC_2000'
                                  },
@@ -431,7 +431,7 @@ define([],function(){
                 addLULC2005Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'LULC_2005'
                                  },
@@ -447,7 +447,7 @@ define([],function(){
                 addLULC2010Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'LULC_2010'
                                  },
@@ -463,7 +463,7 @@ define([],function(){
                 addLULC2015Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'LULC_2015'
                                  },
@@ -481,7 +481,7 @@ define([],function(){
                 addImage1985Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'layers': 'Landsat_1985',
                                  },
@@ -497,7 +497,7 @@ define([],function(){
                 addImage1990Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'layers': 'Landsat_1990',
                                  },
@@ -513,7 +513,7 @@ define([],function(){
                 addImage1995Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'layers': 'Landsat_1995',
                                  },
@@ -529,7 +529,7 @@ define([],function(){
                 addImage2000Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'layers': 'Landsat_2000'
                                  },
@@ -545,7 +545,7 @@ define([],function(){
                 addImage2005Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'SPOT_2005'
                                  },
@@ -561,7 +561,7 @@ define([],function(){
                 addImage2010Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'SPOT_2010'
                                  },
@@ -577,7 +577,7 @@ define([],function(){
                 addImage2015Layer: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'SPOT_2015'
                                  },
@@ -593,7 +593,7 @@ define([],function(){
                 addTown: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'Kaohsiung_Town'
                                  },
@@ -609,7 +609,7 @@ define([],function(){
                 addVillage: function(){
                     var self = this;
                     var wms_source = new ol.source.TileWMS({
-                        url: 'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url: 'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                                  'LAYERS': 'Kaohsiung_Village'
                                  },

@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hello World</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--add required stylesheets-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--leaflet css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--add favicon for the web page-->
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+
+    <!--Font-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="storymap.css">
+
+    <!--add required libraries-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
+    <!--jquery and Popper-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <!--boostrap-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--leaflet.ajax for asynchronously adding geojson data-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+
+    <!--story map plugin-->
+    <script src="storymap.js"></script>
+
+    <!---ChartJS-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+        
+    <!--Fontawesome-->
+    <link href="/static/css/fontawesome/css/all.css" rel="stylesheet">  
+
+</head>
+<body>
+<div id="storymap" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
+        <div style="background-color: #fa9d26;" class="col-sm-6 col-md-12 storymap-headtext">
+            <div id="headtext_left"><h1 style="font-size: 200px;">11</h1></div>
+　          <div id="headtext_right"><img style="width:450px; padding:20px;" src="/static/image/sdg11.png" alt="SDG" class="center"></div>
+　          <div id="headtext_middle">
+                <h2 style="font-size: 72px;">永續城市與社區</h2>
+                <span style="font-size: 44px;">促使城市與人類居住具包容、安全、韌性及永續性</span>
+            </div>
+        </div>
+        <div style="background-color: rgba(51, 51, 51, 0.856); height: 280px; " class="col-sm-6 col-md-12 storymap-headtext">
+            <div style="text-align: justify; padding: 20px;">
+                <p style="font-size: 24px; color: rgb(255, 255, 255);">
+                    依照聯合國統計報告，到2030年時，世界上將近有<strong style="color: #fa9d26;">60%</strong> 的人口將居住在城市地區。 
+                </p>
+                <p style="font-size: 20px; color: rgb(255, 255, 255);">
+                    臺灣雖非聯合國成員，但環境及社會經濟同樣會受到氣候災變及國際潮流影響。<br>
+                    而都市和人類居住區域對於實現長期發展目標和落實改善人們的生活品質至關重要。<br>
+                    SDG11更希望從社會、經濟及環境角度，檢視居民在良好生活條件下是否能與周圍自然環境取得平衡。
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4 storymap-story">
+                <section>
+                    <h2>Study Area</h2>
+                </section>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 storymap-story">
+            <section data-scene="scene1">
+                <div style="padding: 10px; font-size: 17px;text-align: justify;">
+                    <h2>研究區域</h2>
+                    <p>高雄市土地總面積約佔2,952平方公里,為六都之首。相較於首都台北市，橫跨都市及山區的高雄市蘊含豐富的自然資源及地景，且高程落差大，土地覆蓋在各個行政區中有很大的差異。
+                    </p>
+                    <p>
+                       然而,這幾年來人口成長迅速，使得都市化現象逐漸蔓延至過去的市郊,甚至帶給周遭自然環境潛在的威脅。
+                       這座過去曾因重工業發展而導致之空氣水質、土壤及地下水污染的城市，在經歷過氣候變遷衝擊及莫拉克風災的重創後，其自然環境更需要政府及居民更加重視,以共同守護都市及周圍生態的永續性。
+                    </p>
+                    <img style="width:100%" src="/static/image/kaohsiung_city1.jpg" alt="WebGIS">
+                </div>
+            </section>
+            <section data-scene="scene2">
+                <div style="padding: 10px; font-size: 17px;text-align: justify;">
+                    <h2>高雄市現況特徵</h2>
+                    憑藉其歷史悠久的都市發展和特殊的地理位置，高雄市一直為人口稠密的直轄市之一。全市共有38個行政區、900個村里。
+                    從下方統計圖表中可以看到，整體城市人口自1985年後快速上升，直至現在人口已超越有270萬人。             
+                    <br>
+                    <br>
+                    <div style="border-style: outset; border-radius: 5px; border-width: 2px; border-color: rgb(133, 131, 129);">
+                        <div><canvas id="pop-all-chart" style="height:200px"></canvas></div>
+                    </div>
+            </section>
+            <section data-scene="scene3" style="width: 500px;">
+                <h2>Indicators</h2>
+                <div style=" padding:10px; text-align: justify; border-style: outset; border-radius: 5px; border-width: 2px; border-color: rgb(184, 129, 40);">
+                    <h5 style="font-weight:bold; color: rgb(184, 129, 40);">在SDG 11的永續發展目標下,我們應該如何評估都市永續性? </h5>
+                    <span style="font-size:16px">
+                        <i class="fas fa-question-circle"></i> 
+                        有一天土地開發的速度會不會其實超過我們所需要的？
+                    </span>
+                </div>             
+               <br>
+                <div>
+                    <h5 style="font-weight: bold;">SDG指標11.3.1：土地消耗率與人口增長率之比率</h5>
+                    <p style="text-align: justify; font-size: 16px;">
+                        土地消耗率與人口增長率的比率是衡量土地利用效率的一個很好的指標，旨在回答剩餘未開發城市土地的開發速度是否低於或高於現行人口增長速度。
+                        為了達到都市土地的永續利用，土地消耗率低於人口增長率是理想上必須達成的。
+                    </p>
+                </div>                              
+            </section>
+            <section data-scene="scene4" style="width: 500px; padding: 10px;">
+                <div style="padding: 10px;">
+                    <h5 style="font-weight: bold;">計算土地利用效率(LUE)的要素</h5>
+                    <ul style="text-align: justify; font-size: 16px;">                 
+                        <li><strong> 土地消耗率(LCR)</strong>
+                            指的是是都市化土地或都市開發區域在一段時間內佔用土地的變化率,以佔土地面積的百分比表示。
+                        </li>   
+                        <li><strong> 人口成長率(PGR)</strong> 
+                            指的是一個特定區域在一個時期內的人口變化百分比。它反映了一個時期內的出生和死亡人數以及遷入和遷出地區的人數。
+                        </li>
+                    </ul>
+                    <h5 style="font-weight: bold; font-size: 18px; text-align: center;">土地利用效率(LUE) = 土地消耗率(LCR)/人口成長率(PGR)</h5>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+
+    var layers = {
+        layer1: {
+            layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+        },
+        layer2: {
+            layer: L.geoJson.ajax('Kaohsiung.geojson', {
+                color: 'orange',
+                weight: 5
+            }),
+            legend: '<i style="background: orange; opacity: 0.5"></i><p><b>Study Area</b></p>'
+        },
+        layer3: {
+            layer: L.geoJson.ajax('Kaohsiung_TOWN.geojson', {
+                color: 'orange',
+                weight: 5
+            }),
+            legend: '<i style="background: orange; opacity: 0.5"></i><p><b>Study Area</b></p>'
+        },
+        layer4: {
+            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
+        },
+        layer5: {
+            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
+        },
+        layer6:{
+            layer: L.tileLayer.wms('http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms?',{
+                layers:'MOST_WebGIS:Builtup_Density',
+                format: 'image/png',
+                transparent: true,
+                version: '1.1.0'
+            })
+        }
+    };
+
+    var scenes = {
+        scene1: {lat: 23.1, lng: 120.08, zoom: 8, layers: [layers.layer2], name: "scene 1"},
+        scene2: {lat: 22.7, lng: 120.08, zoom: 10, layers: [layers.layer3], name: "scene 2"},
+        scene3: {lat: 22.8, lng: 120.5, zoom: 12, layers: [layers.layer1], name: "scene 3"},
+        scene4: {lat: 22.8, lng: 120.2, zoom: 12, layers: [layers.layer5,layers.layer6], name: "scene 4"}
+    };
+
+    $('#storymap').storymap({
+        scenes: scenes,
+        baselayer: layers.layer4,
+        legend: true,
+        loader: true,
+        flyto: true,
+        credits:  "Build with <i class='material-icons' </i> ",
+        scalebar: true,
+        scrolldown: true,
+        progressline: true,
+        navwidget: true,
+        createMap: function () {
+            var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([22.4, 120.08], 7);
+            basemap = this.baselayer.layer.addTo(map);
+            return map;
+        }
+    });
+
+    var website_url = 'http://10.232.234.228:7000/'
+    function makePopcharts(){
+        //Get json data from Ajax 
+        var jsonData = $.ajax({
+          url: website_url+ 'pop/all',
+          dataType: 'json',
+        }).done(function (results) {
+            // Save json data into array
+            var labels = [], population=[]; 
+            for(var populationRecord in results)
+            {
+                labels.push(results[populationRecord].fields.year);
+                population.push(results[populationRecord].fields.population);
+            }
+            // Setup Data
+            var popAllData = {
+                labels : labels,
+                datasets : [
+                    {
+                        label: "人口數",
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(38, 46, 152, 0.81)",
+                        borderColor: "rgba(38, 46, 152, 0.3)",
+                        borderCapStyle: 'butt',
+                        data: population,
+                        spanGaps: false,
+                    }
+                ]
+            };
+            // Get canvas Element ID
+            var ctx = document.getElementById("pop-all-chart").getContext('2d');
+            ctx.height=9;                                  
+            var myLineChart = new Chart(ctx, {
+                type: 'line',
+                data: popAllData,
+                options: {
+                    responsive: true,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '人口成長變化'
+                        }
+                    }
+                }
+            });
+        });
+    }
+    makePopcharts();
+    
+</script>
+</body>
+</html>

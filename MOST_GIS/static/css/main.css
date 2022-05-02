@@ -26,11 +26,32 @@ body h1 {
     height: 92%;
 }
 
+#guide-layer{
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+}
+
+#guide {
+    width: 100%;
+    height: 92%;
+    z-index: 990;
+}
+
+.blank{
+    width: 100%;
+    height: 8%;
+    background-color:transparent;
+    z-index: 990;
+}
 .navbar{
     width: 100%;
     height: 8%;
     background-color:#1c1f1c;
+    z-index: 900;
 }
+
 
 .navbar-content{
     color: #ffff;
@@ -42,6 +63,17 @@ body h1 {
 
 .navbar-content h1{
     font-size: 26px;
+}
+
+.navbar-button {
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+.navbar-button:hover {
+  color: rgb(226, 155, 48);
 }
 
 .map-coordinate-container{
@@ -102,32 +134,52 @@ body h1 {
     position: absolute;
     left:20%;
     top:10%;
-    z-index: 99999999;
+    z-index: 9999;
     padding: 10px 10px 10px 10px;
     width:72%;
     background-color: white;
 
 }
 
-.panel{
-    height: 100%;
-    width: 60px;
-    position: absolute;
-    right: 0%;
-    z-index: 9999;
-    padding: 1%;    
-    //background-color:#3C4E54;
+
+.guide-button {
+    border: 1px solid;
+    border-color: transparent;
     color:#fff;
-    //border-right: 10px solid orange;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5%;
+    height: 40px;
+    width: 40px; 
+    font-size: 20px;
 }
 
-.panel-function{
+.customTooltip {
+    width:auto;
+    height:auto;
+    text-align: justify;
+}
+.panel {
+    z-index: 999;
+    padding: 1%;    
+    color:#fff;
+    height: 100%;
+    width: 70px;
+    position: absolute;
+    right: 0%;
+}
+
+.panel-function {
     border: 1px solid;
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 5%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
 }
-.panel-function:hover{
+.panel-function:hover {
     background-color: #72939e;
     box-shadow: 0 0 2px #5e7982, 0 0 2px #5e7982, 0 0 2px #5e7982, 0 0 2px #5e7982;
 }
@@ -145,36 +197,20 @@ body h1 {
     cursor: move;
    
 }
-.help-container{
-    position: absolute;
-    top: 80px; 
-    right:500px; 
-    width: 650px; 
-    height:500px; 
-    background-color: #ffffff;
-    border-radius: 5px;
-    color: #414040;
-    z-index: 999;
-}
-.help-container-header{
-    padding: 5px;
-    background-color: #414040;
-    color:rgb(245, 245, 245);
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    align-items: center;
-    border-radius: 0 5px;
-    border-top-left-radius:5px;
-    border-top-right-radius: 5px;
-}
-.help-content{
-    padding: 15px;
-    height: 480px;
-    overflow: auto;
-}
 
+.function-button {
+    border: 1px solid;
+    border-color: #fff;
+    color:#fff;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5%;
+    height: 40px;
+    width: 40px; 
+    font-size: 20px;
+}
+  
 .info-container-header{
     background-color: #414040;
     color:rgb(245, 245, 245);

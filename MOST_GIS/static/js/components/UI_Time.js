@@ -68,7 +68,7 @@ define([],function(){
                 }, 
                 addAnimatedLULCLayer: function(){
                     var wms_source = new ol.source.ImageWMS({
-                        url:'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url:'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                             'layers': 'MOST_WebGIS:LULC'
                         },
@@ -120,7 +120,7 @@ define([],function(){
                 }, 
                 addAnimatedBuiltupLayer: function(){
                     var wms_source = new ol.source.ImageWMS({
-                        url:'http://192.168.50.69:8080/geoserver/MOST_WebGIS/wms',
+                        url:'http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms',
                         params: {
                             'layers': 'MOST_WebGIS:Builtup_Density'
                         },
@@ -132,7 +132,7 @@ define([],function(){
                     map.addLayer(this.animatedBuiltupLayer); 
                 },
                 showBuiltupLegend: function(){
-                    this.builtupLegendUrl = 'http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=MOST_WebGIS:Builtup_Density';
+                    this.builtupLegendUrl = 'http://10.232.234.228:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=MOST_WebGIS:Builtup_Density';
                     document.getElementById('builtup-legend').src = this.builtupLegendUrl;
                 },
                 clearBuiltupLayer: function(){

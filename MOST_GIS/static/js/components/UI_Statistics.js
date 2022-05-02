@@ -1,7 +1,7 @@
 define([],function(){
     //??html
     var statisticsComponentHtml = "";
-    var website_url = "http://192.168.50.69:7000/" 
+    var website_url = "http://10.232.234.228:7000/" 
     var loadHtml = function(){
         $.ajax({
             url: 'static/componentTemplates/statistics/statistics.html', 
@@ -335,7 +335,7 @@ define([],function(){
                 //----------------- Add  Spatial Units Layers ---------//
                 addTown: function(){
                     var self = this;
-                    var town_url ='http://192.168.50.69:8080/geoserver/MOST_WebGIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=MOST_WebGIS%3AKaohsiung_Town&&outputFormat=application%2Fjson'       
+                    var town_url ='http://10.232.234.228:8080/geoserver/MOST_WebGIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=MOST_WebGIS%3AKaohsiung_Town&&outputFormat=application%2Fjson'       
                     this.TownBoundsLayer = new ol.layer.Vector({
                         source:  new ol.source.Vector({
                             url:town_url,
@@ -347,7 +347,7 @@ define([],function(){
                 },
                 addVillage: function(){
                     var self = this;
-                    var village_url ='http://192.168.50.69:8080/geoserver/MOST_WebGIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=MOST_WebGIS%3AKaohsiung_Village&outputFormat=application%2Fjson'       
+                    var village_url ='http://10.232.234.228:8080/geoserver/MOST_WebGIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=MOST_WebGIS%3AKaohsiung_Village&outputFormat=application%2Fjson'       
                     this.VillageBoundsLayer = new ol.layer.Vector({
                         source:  new ol.source.Vector({
                             url:village_url,

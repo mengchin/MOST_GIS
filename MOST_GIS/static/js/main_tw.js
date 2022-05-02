@@ -29,70 +29,70 @@ introJs().setOptions({
     steps: [
         {
             element: '#guide8',
-            title:'Zoom Control',
-            intro: 'Click "+" to zoom in, and click "-" to zoom out the map. You can also use scroll the mouse middle button to zoom in and out.',
+            title:'地圖縮放',
+            intro: '點選 "+" 以放大地圖, 點選"-"以縮小地圖。藉由控制滑鼠中間滾輪也可以縮放地圖。',
             position: 'right'
-        },    
+        }, 
         {
           element: '#guide1',
-          title:'Switch Basemap',
-          intro: 'You can switch different basemap by selecting different radio buttons.<p>OpenStreet <img src="/static/image/OpenstreetMap.png" /> </p> <p>Carto Light  <img src="/static/image/LightMap.png" /> </p> <p>Carto Dark  <img src="/static/image/DarkMap.png" /></p><p>Stamen  &nbsp;&nbsp;&nbsp;&nbsp;    <img src="/static/image/TerrainMap.png" /></p> ',
+          title:'切換底圖',
+          intro: '可切換不同底圖<p>OpenStreet <img src="/static/image/OpenstreetMap.png" /> </p> <p>Carto Light  <img src="/static/image/LightMap.png" /> </p> <p>Carto Dark  <img src="/static/image/DarkMap.png" /></p><p>Stamen  &nbsp;&nbsp;&nbsp;&nbsp;    <img src="/static/image/TerrainMap.png" /></p> ',
           position: 'left'
         },
         {
           element: '#guide2',
-          title:'Set Bookmarks',
-          intro: 'You can add a spatial bookmark to revisit the same location and zoom scale.',
+          title:'建立書籤',
+          intro: '依照當前檢視比例及地圖中心建立書籤，可再度縮放到同一位置',
           position: 'left'
         },
         {
           element: '#guide3',
-          title:'Add Layers',
-          intro: 'You can overaly layer tiles and customize the transparency based on the slider.',
+          title:'加入圖層',
+          intro: '可加入新的圖層，並可調整個別圖層的透明度。',
           position: 'left'
         },
         {
           element: '#guide4',
-          title:'Temporal Changes',
-          intro: 'You can scroll the slider to check the temproal changes after loading LULC maps.',
+          title:'時空變遷',
+          intro: '載入土地覆蓋圖層後可移動回滑軌觀看不同時期變遷。',
           position: 'left'
         },
         {
           element: '#guide5',
-          title:'Identify Information',
-          intro: 'You can click on different features to check the land use efficiency via statistical graphs.',
+          title:'資訊查詢',
+          intro: '點選不同區域圖徵可查詢到更細部的資訊，例如土地利用效率。',
           position: 'left'
         },
         {
           element: '#guide6',
-          title:'Clear All Layers',
-          intro: 'Clear all existed and added layers except for the base map.',
+          title:'清除所有圖層',
+          intro: '所有圖面上除了底圖的圖層皆會被清除。',
           position: 'left'
         },
         {
             element: '#guide7',
-            title:'Print Map',
-            intro: 'Print the current map view.',
+            title:'列印地圖',
+            intro: '使用者可以列印當前的地圖範圍。',
             position: 'left'
         },
         {
             element: '#guide9',
-            title:'Mouse Position',
-            intro: 'The corrdinate of the mouse position.',
+            title:'滑鼠游標位置',
+            intro: '顯示當前滑鼠游標在地圖上的經緯度坐標。',
             position: 'top'
         },
         {
             element: '#guide10',
-            title:'Scale Bar',
-            intro: 'The scale of the current map view.',
+            title:'比例尺',
+            intro: '顯示當前的地圖比例尺。',
             position: 'top'
-        }        
+        }      
     ],
     tooltipClass: 'customTooltip'
 }).start();
 //introJs().refresh()
- 
-var website_url = "http://10.232.235.155:7000/" 
+
+var website_url = "http://10.232.234.228:7000/" 
 //---------------------- Global Function(Generating Plots)--------------------
 //****Entropy Charts *****/
 function SetupEntropyCharts(spatialunit,areacode){
@@ -141,7 +141,7 @@ function SetupEntropyCharts(spatialunit,areacode){
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Shannon Entropy'
+                            text: 'Shannon Entropy(熵)'
                         }
                     }
                 }
@@ -199,7 +199,7 @@ function SetupAAPDEACharts(areacode){
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Abstract Achieved Population Density in Expansion Areas (AAPDEA)'
+                            text: '單位建築開發面積居住人口數(AAPDEA, 人/平方公里)'
                         }
                     }
                 }
@@ -230,7 +230,7 @@ function SetupPopCharts(areacode){
                 labels : labels,
                 datasets : [
                     {
-                        label: "Population",
+                        label: "人口數",
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: "rgba(38, 46, 152, 0.81)",
@@ -255,7 +255,7 @@ function SetupPopCharts(areacode){
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Population Growth'
+                            text: '人口成長'
                         }
                     }
                 }
@@ -286,7 +286,7 @@ function SetupLUECharts(areacode){
                 labels : labels,
                 datasets : [
                     {
-                        label: "Land Use Efficiency",
+                        label: "土地利用效率",
                         fill: false,
                         lineTension: 0.1,
                         backgroundColor: "rgba(75, 120, 76, 0.8)",
@@ -311,7 +311,7 @@ function SetupLUECharts(areacode){
                     plugins: {
                         title: {
                             display: true,
-                            text: 'Land Use Efficiency'
+                            text: '土地利用效率(LUE)'
                         }
                     }
                 }
@@ -361,7 +361,7 @@ const messages = {
         header: {
             title: "永續發展目標SDG11地圖探查網",
             buttons:{
-                home:"回到首頁"
+                home:"回到首頁",
             }
         },
         bookmarks:{
@@ -403,7 +403,7 @@ const i18n = new VueI18n({
  const app = new Vue({    
   el: '#app',
   store: store,
-  i18n,
+  //i18n,
   components:{},
   data: function () {
       return {
@@ -438,7 +438,6 @@ const i18n = new VueI18n({
         villageName:'',
         LULC_all:[],
         LULC_data:[],
-        formula_AAPDEA:'$$ AAPEDA= {Pop_{t+n}-Pop_{t}/Urb_{t+n}-Urb_{t}} $$'
       };
   },
   watch:{
@@ -514,7 +513,7 @@ const i18n = new VueI18n({
                 }),
                 layers: [
                     new ol.layer.Tile({
-                        source: new ol.source.OSM
+                        source: new ol.source.OSM()
                     })
                 ],
                 target: 'map',
@@ -530,8 +529,11 @@ const i18n = new VueI18n({
         /* BaseMap Switcher */
         switchBaseMap: function(){
             const openStreetMap = new ol.layer.Tile({
-              source: new ol.source.OSM,
-              visible:false,
+              source: new ol.source.XYZ({
+                url:'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                attributions:'&copy;'                
+              }),
+              visible:true,
               title:'OSM'
             })
             const cartolight = new ol.layer.Tile({
@@ -562,7 +564,7 @@ const i18n = new VueI18n({
             //BaseMap Layer Group//
             const baseLayerGroup = new ol.layer.Group({
                 layers:[
-                    cartolight,openStreetMap,cartodark, stamen
+                    openStreetMap, cartolight,cartodark, stamen
                 ]
             })
             map.addLayer(baseLayerGroup);
@@ -669,7 +671,7 @@ const i18n = new VueI18n({
         //----------------- Add  Spatial Units Layers ---------//
         addTown: function(){
             var self = this;
-            var town_url ='http://10.232.235.155:8080/geoserver/MOST_WebGIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=MOST_WebGIS%3AKaohsiung_Town&&outputFormat=application%2Fjson'       
+            var town_url ='http://10.232.234.228:8080/geoserver/MOST_WebGIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=MOST_WebGIS%3AKaohsiung_Town&&outputFormat=application%2Fjson'       
             this.TownBoundsLayer = new ol.layer.Vector({
                 source:  new ol.source.Vector({
                     url:town_url,
@@ -681,7 +683,7 @@ const i18n = new VueI18n({
         },
         addVillage: function(){
             var self = this;
-            var village_url ='http://10.232.235.155:8080/geoserver/MOST_WebGIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=MOST_WebGIS%3AKaohsiung_Village&outputFormat=application%2Fjson'       
+            var village_url ='http://10.232.234.228:8080/geoserver/MOST_WebGIS/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=MOST_WebGIS%3AKaohsiung_Village&outputFormat=application%2Fjson'       
             this.VillageBoundsLayer = new ol.layer.Vector({
                 source:  new ol.source.Vector({
                     url:village_url,
@@ -726,8 +728,8 @@ const i18n = new VueI18n({
                     var features=e.target.getFeatures();
                     var feature=features.item(0);
                     this.districtCode = feature.getProperties().TOWNCODE;
-                    this.districtName = feature.getProperties().TOWNENG;
-                    document.getElementById('statistics-info-content').innerHTML = 'TOWNCODE:' +'&nbsp'+ this.districtCode + '<br>' + 'TOWNNAME:' +'&nbsp'+ this.districtName + '<br>';
+                    this.districtName = feature.getProperties().TOWNNAME;
+                    document.getElementById('statistics-info-content').innerHTML = '行政區代碼:' +'&nbsp'+ this.districtCode + '<br>' + '行政區名稱:' +'&nbsp'+ this.districtName + '<br>';
                     document.getElementById('pop-chart-container').innerHTML = "<canvas width=200 height=150 id='pop-chart'>";
                     document.getElementById('entropy-chart-container').innerHTML = "<canvas width=200 height=150 id='entropy-chart'>";
                     document.getElementById('aapdea-chart-container').innerHTML = "<canvas width=200 height=150 id='aapdea-chart'>";
@@ -759,8 +761,8 @@ const i18n = new VueI18n({
                     var feature=features.item(0);
                     //console.log('feature',feature.getProperties())
                     this.villageCode = feature.getProperties().VILLCODE
-                    this.villageName = feature.getProperties().VILLENG                           
-                    document.getElementById('statistics-info-content').innerHTML = 'VILLAGECODE:' +'&nbsp'+ this.villageCode + '<br>' + 'VILLAGENAME:' +'&nbsp'+ this.villageName + '<br>';
+                    this.villageName = feature.getProperties().VILLNAME                           
+                    document.getElementById('statistics-info-content').innerHTML = '村里代碼:' +'&nbsp'+ this.villageCode + '<br>' + '村里名稱:' +'&nbsp'+ this.villageName + '<br>';
                     document.getElementById('entropy-chart-container').innerHTML = "<canvas width=200 height=150 id='entropy-chart'>";
                     var spatialunit = 'village';
                     var villcode = this.villageCode;
@@ -889,7 +891,7 @@ const i18n = new VueI18n({
                     labels : labels,
                     datasets : [
                         {
-                            label: "Builtup",
+                            label: "建築及開發",
                             fill: false,
                             lineTension: 0.1,
                             backgroundColor: "rgba(239, 89, 164, 1)",
@@ -899,7 +901,7 @@ const i18n = new VueI18n({
                             spanGaps: false,
                         },
                         {
-                            label: "Barren",
+                            label: "裸露地表",
                             fill: false,
                             lineTension: 0.1,
                             backgroundColor: "rgba(106, 73, 62, 1)",
@@ -909,7 +911,7 @@ const i18n = new VueI18n({
                             spanGaps: false,
                         },
                         {
-                            label: "Cultivated",
+                            label: "農業種植",
                             fill: false,
                             lineTension: 0.1,
                             backgroundColor: "rgba(218, 218, 26, 1)",
@@ -919,7 +921,7 @@ const i18n = new VueI18n({
                             spanGaps: false,
                         },
                         {
-                            label: "Water Bodies",
+                            label: "水體",
                             fill: false,
                             lineTension: 0.1,
                             backgroundColor: "rgba(34, 100, 225, 0.74)",
@@ -929,7 +931,7 @@ const i18n = new VueI18n({
                             spanGaps: false,
                         },
                         {
-                            label: "Vegetation",
+                            label: "森林及綠植",
                             fill: false,
                             lineTension: 0.1,
                             backgroundColor: "rgba(18, 206, 87, 1)",
@@ -955,7 +957,7 @@ const i18n = new VueI18n({
                         plugins: {
                             title: {
                                 display: true,
-                                text: 'Temporal Changes of Land Covers'
+                                text: '歷年土地覆蓋比例'
                             }
                         },
                         scales: {
@@ -997,7 +999,7 @@ const i18n = new VueI18n({
                     labels : labels,
                     datasets : [
                         {
-                            label: "Population",
+                            label: "人口數",
                             fill: false,
                             lineTension: 0.1,
                             backgroundColor: "rgba(38, 46, 152, 0.81)",
@@ -1023,7 +1025,7 @@ const i18n = new VueI18n({
                         plugins: {
                             title: {
                                 display: true,
-                                text: 'Population Growth'
+                                text: '歷年人口成長'
                             }
                         }
                     }
@@ -1066,9 +1068,6 @@ const i18n = new VueI18n({
     this.initDraggable();
     this.makeLULCcharts(); 
     this.makePopcharts();   
-    this.$nextTick(function() {
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-    });    
   }
  
       

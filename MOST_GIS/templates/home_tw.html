@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>永續發展教育學習網</title>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="/static/css/home.css"> 
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+                <a class="navbar-brand" href="#page-top">SDG 11 Education</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#sdg">永續發展目標</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#webgis">線上地圖瀏覽</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">English</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header style="background-image: url('/static/image/sdg-banner.png');">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">歡迎來到SDG 11 永續發展目標教育網站</h1>
+                <p class="lead">這個網站將結合線上地圖瀏覽功能傳遞學生SDG 11永續發展目標理念</p>
+                <a class="btn btn-lg btn-light" href="#sdg">開始！</a>
+            </div>
+        </header>
+        <!-- SDG section-->
+        <section id="sdg">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div style=" text-align: justify; text-justify: inter-word;">
+                        <h2>聯合國永續發展目標(SDGs)背景</h2>
+                        <p class="lead">在氣候變遷劇烈、資源有限的衝擊下，聯合國大會2015年制訂2030年永續發展議 (2030 Agenda Sustainable Development)，提供人類與地球現在及未來和平與繁榮的藍圖。「2030年永續發展議程」以17個永續發展目標(Sustainable Development Goals, SDGs)為核心，並另設有169項具體目標(targets)及230項參考指標(indicators)，呼籲所有國家採取行動以攜手合作扭轉當前局勢，進而達到永續發展的可能。從SDG4優質教育目標可以看到，永續發展教育亦為達成永續發展的重要里程碑，聯合國教科文組織(UNESCO)更推廣將永續發展教育納入教學和學習。</p>
+                        <img style="width:100%" src="/static/image/sdg_tw.png" alt="SDG" class="center">
+                    </div>
+                    <div style="padding-top: 25px;text-align: justify; text-justify: inter-word;">
+                        <p class="lead">
+                            因此,本研究設計一問卷來評估學生對於永續發展指標的素養及能力。
+                            點選下方按鈕進入問卷 >>>
+                        </p>
+                    </div>
+                    <a type="button" class="btn btn-outline-secondary btn-lg btn-block" target="_blank" href="https://www.surveycake.com/s/8zPr1"> 開啟問卷連結</a>
+                </div>
+            </div>
+        </section>
+
+        <!--Story Map-->
+        <div class="container px-4">
+            <embed type="text/html" src="/static/story map/storymap_tw.html"  width="1280" height="800">            
+        </div>
+
+        <!-- WebGIS section-->
+        <section class="bg-light" id="webgis">
+            <div class="container px-4">
+                <div class="row gx-4">
+                    <h2>本圖台建置目的</h2>
+                    <div class="col-lg-8" style=" text-align: justify; text-justify: inter-word;">
+                        <p class="lead"> 在SDG 11的永續發展目標實施願景下，對於環境變遷和永續城市與社區規劃等亟需人民培養素養，以建立永續發展意識共同維護環境永續性。因此，本圖台希望能夠提供學生一數位化學習環境，藉由圖層套疊、圖面點擊和地圖縮放等功能，探查高雄市1985年至2015年土地覆蓋變遷及都市成長特徵，並提供相關評估性指標啟發學生進一步獨立思考能力。</p>
+                        <p class="lead">如果你不曾使用過相關GIS圖台，或是想要了解關於本圖台的操作方法，歡迎進入導覽。</p>
+                        <a class="btn btn-lg btn-secondary" target="_blank" href="{% url 'guide_tw' %}">開始導覽</a>&nbsp;&nbsp;<a class="btn btn-lg btn-success" href="{% url 'index_tw' %}">進入圖台</a>
+                    </div>
+                    <div class="col-lg-4">
+                        <img style="width:100%" src="/static/image/WebGIS.png" alt="WebGIS">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4">
+                <p class="m-0 text-center text-white">Acknowlegements: Ministry of Science and Technology</p>
+                <p class="m-0 text-center text-white">Editor: Meng-Chin Tsai </p>                           
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/static/js/home.js"></script>
+
+    </body>                                                                                                                                                                                                                                                                                                         
+</html>

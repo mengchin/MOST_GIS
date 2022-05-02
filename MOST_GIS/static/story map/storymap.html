@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hello World</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--add required stylesheets-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!--leaflet css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--add favicon for the web page-->
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+
+    <!--Font-->
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="storymap.css">
+
+    <!--add required libraries-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
+    <!--jquery and Popper-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <!--boostrap-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--leaflet.ajax for asynchronously adding geojson data-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+    
+    <!--Fontawesome-->
+    <link href="/static/css/fontawesome/css/all.css" rel="stylesheet">  
+
+    <!--story map plugin-->
+    <script src="storymap.js"></script>
+    
+    <!---ChartJS-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+
+
+</head>
+<body>
+<div id="storymap" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-8 storymap-map"></div>
+        <div style="background-color: #fa9d26;" class="col-sm-6 col-md-12 storymap-headtext">
+            <div id="headtext_left"><h1 style="font-size: 200px;">11</h1></div>
+　          <div id="headtext_right"><img style="width:450px; padding:20px;" src="/static/image/sdg11.png" alt="SDG" class="center"></div>
+　          <div id="headtext_middle">
+                <h2 style="font-size: 56px;">SUSTAINABLE CITIES AND COMMUNITIES</h2>
+                 Make cities inclusive, safe, resilient and sustainable.
+            </div>
+        </div>
+        <div style="background-color: rgba(51, 51, 51, 0.856); height: 300px; " class="col-sm-6 col-md-12 storymap-headtext">
+            <div style="text-align: justify; padding: 20px;">
+                <p style="font-size: 24px; color: rgb(255, 255, 255);">
+                    According to the UN’s report, by 2030, nearly <strong style="color: #fa9d26;">60%</strong> of the world's population will live in urban areas. 
+                </p>
+                <p style="font-size: 20px; color: rgb(255, 255, 255);">
+                    Although Taiwan is not a member of the United Nations, its environment and social economy will also be affected by natural disasters and international economic trends.
+                    Cities and human settlements are crucial for meeting long-term development objectives and enabling tangible improvements in the quality of peoples’ lives.
+                    SDG11 hopes to examine whether you can live in good living conditions and the surrounding natural environment from a social, economic and environmental perspective.
+                </p>
+            </div>
+            <div class="col-sm-6 col-md-4 storymap-story">
+                <section>
+                    <h2>Study Area</h2>
+                </section>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 storymap-story">
+            <section data-scene="scene1">
+                <div style="padding: 10px; font-size: 17px;text-align: justify;">
+                    <h2>Study Area</h2>
+                    <p>The overall area of Kaohsiung City is about 2,951 square kilometers, which is the largest city of the six capitals.
+                       In comparison with Taipei City, Kaohsiung City has larger variety in landscapes and elevation difference, 
+                       whose land cover patterns are heterogeneous in administrative regions.
+                    </p>
+                    <p>
+                        However, the rapid population growth in recent years has led to urbanization expansion to the rural areas, and has even brought potential threats to the surrounding natural environment. 
+                        This city used to suffer in air, soil and water pollution due to the development of heavy industry in the past.
+                        Since it has experienced the impact of climate change and the severe damage of the Morroco typhoon, it should be more should be awared and concerned by city government and each individual, in particular the topics of        
+                        urban sustainability and ecosystem services.
+                    </p>
+                    <img style="width:100%" src="/static/image/kaohsiung_city1.jpg" alt="WebGIS">
+                </div>
+            </section>
+            <section data-scene="scene2">
+                <div style="padding: 10px; font-size: 17px;text-align: justify;">
+                    <h2>Characteristics</h2>
+                    With its long history of urban development and special geographical location, Kaohsiung City has always been one of the most densely populated municipalities.
+                    The city has 38 administrative districts and 900 villages.
+                    As can be seen from the statistical chart below, the overall urban population has risen rapidly since 1985, and now the population has exceeded 2.7 million.
+                </div>
+                <br>
+                <div style="border-style: outset; border-radius: 5px; border-width: 2px; border-color: rgb(133, 131, 129);">
+                    <div><canvas id="pop-all-chart" style="height:200px"></canvas></div>
+                </div>
+            </section>
+            <section data-scene="scene3" style="width: 500px;">
+                <h2>Indicators</h2>
+                <div style=" padding:10px; text-align: justify; border-style: outset; border-radius: 5px; border-width: 2px; border-color: rgb(184, 129, 40);">
+                    <h5 style="font-weight:bold; color: rgb(184, 129, 40);"> How do we evaluate urban sustainability under the goal of SDG 11? </h5>
+                    <span style="font-size:18px">
+                        <i class="fas fa-question-circle"></i> 
+                        Will the rate of land development one day actually exceed what we need?
+                    </span>
+                </div>   
+                <br>
+                <div>
+                    <h5 style="font-weight: bold;">Indicator 11.3.1: Ratio of land consumption rate to population growth rate (LUE or LCRPGR)</h5>
+                    <p style="text-align: justify; font-size: 18px;">
+                        Ratio of land consumption rate to population growth rate is a good indicator for measuring land use efficiency and is intended to answer the question of whether the remaining undeveloped urban land is being developed at a rate that is less than, or greater than, the prevailing rate of population growth. 
+                        For a sustaible usage of urban lands, a rate of land consumption lower than the rate of population growth would be desirable.
+                    </p>
+                </div>
+            </section>
+            <section data-scene="scene4" style="width: 500px;">
+                <div style="padding: 10px;">
+                    <h5 style="font-weight: bold;">Components of LUE</h5>
+                    <ul style="text-align: justify; font-size: 18px;">               
+                        <li><strong> Land consumption rate (LCR)</strong>
+                            is the rate at which urbanized land or land occupied by a city/urban area changes
+                            during a period of time, expressed as a percentage of the land occupied by the
+                            city/urban area at the start of that time. 
+                        </li>     
+                        <li><strong> Population growth rate (PGR)</strong> is the change of a population in a defined area during a
+                            period, expressed as a percentage of the population at the start of that period. It
+                            reflects the number of births and deaths during a period and the number of people migrating to and from
+                            the focus area.
+                        </li>
+                    </ul>
+                    <h5 style="font-weight: bold; text-align: center;">Land use efficiency(LUE) = LCR/PGR</h5>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+
+    var layers = {
+        layer1: {
+            layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+        },
+        layer2: {
+            layer: L.geoJson.ajax('Kaohsiung.geojson', {
+                color: 'orange',
+                weight: 5
+            }),
+            legend: '<i style="background: orange; opacity: 0.5"></i><p><b>Study Area</b></p>'
+        },
+        layer3: {
+            layer: L.geoJson.ajax('Kaohsiung_TOWN.geojson', {
+                color: 'orange',
+                weight: 5
+            }),
+            legend: '<i style="background: orange; opacity: 0.5"></i><p><b>Study Area</b></p>'
+        },
+        layer4: {
+            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
+        },
+        layer5: {
+            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png')
+        },
+        layer6:{
+            layer: L.tileLayer.wms('http://10.232.234.228:8080/geoserver/MOST_WebGIS/wms?',{
+                layers:'MOST_WebGIS:Builtup_Density',
+                format: 'image/png',
+                transparent: true,
+                version: '1.1.0'
+            })
+        }
+    };
+
+    var scenes = {
+        scene1: {lat: 23.1, lng: 120.08, zoom: 8, layers: [layers.layer2], name: "scene 1"},
+        scene2: {lat: 22.7, lng: 120.08, zoom: 10, layers: [layers.layer3], name: "scene 2"},
+        scene3: {lat: 22.8, lng: 120.5, zoom: 12, layers: [layers.layer1], name: "scene 3"},
+        scene4: {lat: 22.8, lng: 120.2, zoom: 12, layers: [layers.layer5,layers.layer6], name: "scene 4"}
+    };
+
+    $('#storymap').storymap({
+        scenes: scenes,
+        baselayer: layers.layer4,
+        legend: true,
+        loader: true,
+        flyto: true,
+        credits:  "Build with <i class='material-icons' </i> ",
+        scalebar: true,
+        scrolldown: true,
+        progressline: true,
+        navwidget: true,
+        createMap: function () {
+            var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([22.4, 120.08], 7);
+            basemap = this.baselayer.layer.addTo(map);
+            return map;
+        }
+    });
+    var website_url = 'http://10.232.234.228:7000/'
+    function makePopcharts(){
+        //Get json data from Ajax 
+        var jsonData = $.ajax({
+          url: website_url+ 'pop/all',
+          dataType: 'json',
+        }).done(function (results) {
+            // Save json data into array
+            var labels = [], population=[]; 
+            for(var populationRecord in results)
+            {
+                labels.push(results[populationRecord].fields.year);
+                population.push(results[populationRecord].fields.population);
+            }
+            // Setup Data
+            var popAllData = {
+                labels : labels,
+                datasets : [
+                    {
+                        label: "Population",
+                        fill: false,
+                        lineTension: 0.1,
+                        backgroundColor: "rgba(38, 46, 152, 0.81)",
+                        borderColor: "rgba(38, 46, 152, 0.3)",
+                        borderCapStyle: 'butt',
+                        data: population,
+                        spanGaps: false,
+                    }
+                ]
+            };
+            // Get canvas Element ID
+            var ctx = document.getElementById("pop-all-chart").getContext('2d');
+            ctx.height=9;                                  
+            var myLineChart = new Chart(ctx, {
+                type: 'line',
+                data: popAllData,
+                options: {
+                    responsive: true,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Population Growth'
+                        }
+                    }
+                }
+            });
+        });
+    }
+    makePopcharts();
+</script>
+</body>
+</html>

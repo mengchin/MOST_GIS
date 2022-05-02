@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="/static/css/bootstrap_css/bootstrap.rtl.min.css"> 
         <!---script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script--->            
-    
+        
         <!--Fontawesome-->
         <link href="/static/css/fontawesome/css/all.css" rel="stylesheet">         
         
@@ -53,16 +53,17 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
 
         <!--MathJX-->
-        <script type="text/x-mathjax-config">  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
-        <script type="text/javascript"  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>                  
+        
         <!--Intro JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/5.1.0/intro.min.js" integrity="sha512-B0B1bdTGi9XHtoCINbtR6z9Vi8IYvvtImIE8KWMtqWAVUt2Wn2k69GxM7ya/3rQcz/Pgm/o1WcDU347/5k202A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/5.1.0/introjs-rtl.min.css" integrity="sha512-VwsKKwi99ZnRScgAkJ+ISGNolfoq+ic/mzJfhZWQ1xwfcbLZzLnHDoERYEppL25Okf+wEI/nDhHogudTa/YkWA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/5.1.0/introjs.min.css" integrity="sha512-iaYE9B9u4GU8+KkRTOdRdZuzKdYw1X0hOAa4GwDV/uwdXgoX/ffT3ph1+HG1m4LPZD/HV+dkuHvWFLZtPviylQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--link rel="stylesheet" href="shepherd.js/dist/css/shepherd.css"/>
         <script src="shepherd.js/dist/js/shepherd.min.js"></script--->
-        
+
+            
     </head>
     <body>
         <!--Guide-->
@@ -88,73 +89,66 @@
             <div id="navbar" class="navbar d-flex align-items-center justify-content-left">
                 <div class='navbar-content'>
                     <h1 style="font-weight: bold;">
-                        Investigation tool for SDG 11
+                        永續發展目標SDG11地理資訊網
                     </h1>
                 </div>
-                <div style="position:absolute; right: 20px;">                                
-                    <a class="btn btn-sm btn-light" href="{% url 'home' %}">Back to Home</a>               
+                <div style="position:absolute; right: 20px;">
+                    <a class="btn btn-sm btn-light" href="{% url 'home_tw' %}">回到首頁</a>
                 </div>
             </div>
-            
             <!--Map Coordinate-->
             <div class="map-coordinate-container">
-                Longitude, Latitude: <span id="mouse-position"></span>
-            </div>    
-            
-            
+                經緯度: <span id="mouse-position"></span>
+            </div>       
             <!--Loading-->
             <div id="loading">
                 <div class="loadingContent">
                 </div>
             </div>   
-            <!---SideBar-->  
-            <div id="tool" class="panel">  
-                <div>
-                    <button v-on:click="showBaseMapSwitcher" type="button" class="function-button" data-toggle="tooltip" data-placement="left" title="Change Basemaps">
+            <!---SideBar-->    
+            <div class="panel">  
+                <div class="d-print-none">
+                    <button  v-on:click="showBaseMapSwitcher" class="function-button" data-toggle="tooltip" data-placement="left" title="底圖切換">
                         <i class="fas fa-map"></i>
                     </button>
-                    <button  v-on:click="showBookmarks" type="button" class="function-button" data-toggle="tooltip" data-placement="left" title="Bookmarks">
+                    <button  v-on:click="showBookmarks" class="function-button" data-toggle="tooltip" data-placement="left" title="空間書籤">
                         <i class="fas fa-bookmark"></i>
                     </button>
-                    <button  v-on:click="changeCurrentComponentName('layerComponent')" class="function-button" data-toggle="tooltip" data-placement="left" title="Layers">
+                    <button  v-on:click="changeCurrentComponentName('layerComponent')" class="function-button"data-toggle="tooltip" data-placement="left" title="圖層套疊">
                         <i class="fas fa-layer-group"></i>
                     </button>
-                    <button  v-on:click="changeCurrentComponentName('timeComponent')" class="function-button" data-toggle="tooltip" data-placement="left" title="Temporal Changes">
+                    <button  v-on:click="changeCurrentComponentName('timeComponent')" class="function-button" data-toggle="tooltip" data-placement="left" title="時空變化">
                         <i class="far fa-calendar-alt"></i>
                     </button>
-                    <!--button v-on:click="changeCurrentComponentName('functionComponent')" style="height: 35px;width: 35px; font-size: 17px;" type="button" class="btn btn-outline-light btn-sm" data-toggle="tooltip" data-placement="left" title="Measure Tools">
-                        <i class="fa fa-ruler"></i> 
-                    </button--->
-                    <button v-on:click="showStatistics" class="function-button" data-toggle="tooltip" data-placement="left" title="Information">
+                    <button v-on:click="showStatistics" class="function-button" data-toggle="tooltip" data-placement="left" title="資訊查詢">
                         <i class="fa fa-info-circle"></i> 
                     </button>
-                    <button v-on:click="ClearAllLayer" class="function-button" data-toggle="tooltip" data-placement="left" title="Clear All Layers">
+                    <button v-on:click="ClearAllLayer" class="function-button"  data-toggle="tooltip" data-placement="left" title="清除所有圖層">
                         <i class="fas fa-eraser"></i>
                     </button>
-                    <button v-on:click="PrintMap" class="function-button" data-toggle="tooltip" data-placement="left" title="Print Map">
+                    <button v-on:click="PrintMap" class="function-button" data-toggle="tooltip" data-placement="left" title="列印當前地圖">
                         <i class="fas fa-print"></i>
                     </button>
-                </div>
-
+                </div> 
                 <!--BaseMap Switcher Window-->  
                 <div class="panel-info-container d-print-none" v-show="toShowBaseMapSwitcher">
                     <div class="info-container-header">
                         <div v-on:click="closeBasemapSwitcher"><i style="color: azure;" class="far fa-times-circle" aria-hidden="true"></i></div>
                     </div>              
                     <div id= "BaseMapSwitcher" style="font-family: Georgia;" class="form-check">
-                        <h1 style="font-size: 18px;">Switch Base Map</h1>
+                        <h1 style="font-size: 18px;">底圖切換</h1>
                         <div class = "baseMap" style="font-size: 13px;">
                             <input type="radio" name="baselayerButton" value="OSM" checked>
-                            <label for="OpenStreet">OpenStreet Map</label>
+                            <label for="OpenStreet">OpenStreet 電子地圖</label>
                             <br>
                             <input type="radio" name="baselayerButton" value="CartoLight">
-                            <label for="CartoLight">CartoDB Light</label>
+                            <label for="CartoLight">Carto底圖(淺色)</label>
                             <br>
                             <input type="radio" name="baselayerButton" value="CartoDark">
-                            <label for="CartoDark">CartoDB Dark</label>
+                            <label for="CartoDark">Carto底圖(深色)</label>
                             <br>
                             <input type="radio" name="baselayerButton" value="Stamen">
-                            <label for="Stamen">Stamen Terrain</label>
+                            <label for="Stamen">Stamen 地形圖</label>
                         </div>
                     </div>      
                 </div>  
@@ -165,14 +159,14 @@
                     </div>              
                     <div id="style-3" style="height:100px;overflow:auto; padding:5px;">
                         <div class="form-check">
-                            <h1 style="font-size: 16px;">Bookmarks</h1>
+                            <h1 style="font-size: 16px;">空間書籤</h1>
                             <div id = "bookmarks">
                                 <div style="display:inline-flex">
                                     <input type="text" style="width: 60px;" v-model='inputBookMark'>
-                                    <button class="btn btn-light btn-sm" v-on:click="addBookMarks"><i class="fas fa-plus-square"></i> Add</button>
+                                    <button class="btn btn-light btn-sm" v-on:click="addBookMarks"><i class="fas fa-plus-square"></i> 新增 </button>
                                     &nbsp;&nbsp;
                                     <div v-if="bookmarks.length !=0">
-                                        <button class="btn btn-light btn-sm" v-on:click="clearBookMarks"><i class="fas fa-eraser"></i> Clear</button>
+                                        <button class="btn btn-light btn-sm" v-on:click="clearBookMarks"><i class="fas fa-eraser"></i> 清除所有</button>
                                     </div>
                                 </div>
                                 <div id="bookmark-list" style="padding-top: 10px;"> 
@@ -194,16 +188,16 @@
                         <div v-on:click="closeStatistics"><i style="color: azure;" class="far fa-times-circle" aria-hidden="true"></i></div>
                     </div>    
                     <div id="statistics-config" class="form-check">
-                        <h1 style="font-size: 16px"> Information</h1>
+                        <h1 style="font-size: 16px"> 變遷資訊 </h1>
                         <div style="font-size: 14px;"> 
-                            <span>Please select which spatial units to query:</span><br>
-                            <input type="radio" v-model="spatialUnits" id="town" value="Administrative Districts" checked/><label for="town">Administrative Districts</label><br>
-                            <input type="radio" v-model="spatialUnits" id="village" value="Villages" /><label for="village">Villages</label>
+                            <span>請指定查詢空間單元</span><br>
+                            <input type="radio" v-model="spatialUnits" id="town" value="Administrative Districts" checked/><label for="town">行政區</label><br>
+                            <input type="radio" v-model="spatialUnits" id="village" value="Villages" /><label for="village">村里</label>
                             <hr style="border: 1px solid rgb(160, 160, 160);">
                             <div>
-                                Click the following links to query the detailed information of the entire city.<br>
-                                <span style="cursor: pointer;color:rgb(8, 99, 99);" v-on:click="showpopChart"><i class="fas fa-check-circle"></i>   Population Growth </span> <br>
-                                <span style="cursor: pointer;color:rgb(8, 99, 99);" v-on:click="showlulcChart"><i class="fas fa-check-circle"></i>   Land Cover Changes </span>
+                                點選以下連結查看歷年高雄市整體變遷:<br>
+                                <span style="cursor: pointer;color:rgb(8, 99, 99);" v-on:click="showpopChart"><i class="fas fa-check-circle"></i>   人口成長 </span> <br>
+                                <span style="cursor: pointer;color:rgb(8, 99, 99);" v-on:click="showlulcChart"><i class="fas fa-check-circle"></i>  土地覆蓋變遷 </span>
                             </div>
                         </div>
                     </div>
@@ -221,43 +215,43 @@
                         </div>
                         <div style="padding: 10px;">
                             <div id="feature-info">
-                                <h5 style="font-size: 16px; font-weight: bold;">Feature Information</h5>
+                                <h5 style="font-size: 16px; font-weight: bold;">圖徵資訊</h5>
                                 <div id="statistics-info-content" style="font-size: 14px;"></div>
                             </div>         
                             <div id="district-info">
                                 <ul style="font-size: 13px;" class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                      <button style="padding: 7px;" class="nav-link active" id="pop-tab" data-bs-toggle="tab" data-bs-target="#popInfo" type="button" role="tab" aria-controls="popInfo" aria-selected="true">Population</button>
+                                      <button style="padding: 7px;" class="nav-link active" id="pop-tab" data-bs-toggle="tab" data-bs-target="#popInfo" type="button" role="tab" aria-controls="popInfo" aria-selected="true">人口歷年成長</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button style="padding: 7px;" class="nav-link" id="sdg-tab" data-bs-toggle="tab" data-bs-target="#sdgInfo" type="button" role="tab" aria-controls="sdgInfo" aria-selected="true">SDG Indices</button>
+                                        <button style="padding: 7px;" class="nav-link" id="sdg-tab" data-bs-toggle="tab" data-bs-target="#sdgInfo" type="button" role="tab" aria-controls="sdgInfo" aria-selected="true">永續發展評估指標</button>
                                     </li>
                                     <li class="nav-item" role=""presentation>
-                                        <button style="padding: 7px;" class="nav-link" id="sprawl-tab" data-bs-toggle="tab" data-bs-target="#sprawlInfo" type="button" role="tab" aria-controls="sprawlInfo" aria-selected="false">Land Cover Changes</button>         
+                                        <button style="padding: 7px;" class="nav-link" id="sprawl-tab" data-bs-toggle="tab" data-bs-target="#sprawlInfo" type="button" role="tab" aria-controls="sprawlInfo" aria-selected="false">土地覆蓋變遷</button>         
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="popInfo" role="tabpanel" aria-labelledby="pop-tab">
                                         <div v-if ="toShowPOPalert">
-                                            <span style="font-size: 13px">Population data only investigated at administrative district level. Please refer to another spatial unit.</span>
+                                            <span style="font-size: 13px">歷年人口統計資料僅限於行政區,請指定行政區為查詢空間單元重新查詢。</span>
                                         </div>
                                         <div v-if ="toShowPOPContent">
-                                            <span style="font-size: 13px">Select a feature on the map to idenify population.</span> 
+                                            <span style="font-size: 13px">點選地圖上圖徵查詢人口資料。</span> 
                                             <div style="width: auto; height: auto;" id="pop-chart-container"></div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="sdgInfo" role="tabpanel" aria-labelledby="sdg-tab">
                                         <div v-if ="toShowSDGalert">
-                                            <span style="font-size: 13px">SDG Indices are only calculated at administrative district level. Please refer to another spatial unit.</span>
+                                            <span style="font-size: 13px">由於指標估算時需要歷年人口資訊，故目前SDG指標僅限於行政區,請指定行政區為查詢空間單元重新查詢。</span>
                                         </div>
                                         <div v-if ="toShowSDGContent">
-                                            <span style="font-size: 13px">Select a feature on the map to identify SDG Indices.</span> 
+                                            <span style="font-size: 13px">點選地圖上圖徵查詢土地利用效率及每單位建築開發面積居住人口。</span> 
                                             <div style="width: auto; height: auto;" id="aapdea-chart-container"></div>
                                             <div style="width: auto; height: auto;" id="lue-chart-container"></div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="sprawlInfo" role="tabpanel" aria-labelledby="sprawl-tab">
-                                        <span style="font-size: 13px">Select a feature on the map to identify the entropy of different land cover types.</span> 
+                                        <span style="font-size: 13px">點選地圖上圖徵查詢歷年土地覆蓋類別紋理變化。</span> 
                                         <div style="width: auto; height: auto;" id="entropy-chart-container"></div>
                                     </div>
                                 </div>
@@ -283,7 +277,7 @@
                       <button class="nav-link active" id="pop-tab" data-bs-toggle="tab" data-bs-target="#popInfo" type="button" role="tab" aria-controls="popInfo" aria-selected="true">Population</button>
                     </li>
                     <li class="nav-item" role=""presentation>
-                        <button class="nav-link" id="sprawl-tab" data-bs-toggle="tab" data-bs-target="#sprawlInfo" type="button" role="tab" aria-controls="sprawlInfo" aria-selected="false">Change Dynamics</button>         
+                        <button class="nav-link" id="sprawl-tab" data-bs-toggle="tab" data-bs-target="#sprawlInfo" type="button" role="tab" aria-controls="sprawlInfo" aria-selected="false">Expansion</button>         
                     </li>
                 </ul>
                 <div class="tab-pane fade show active" id="popInfo" role="tabpanel" aria-labelledby="pop-tab"></div>
@@ -303,5 +297,6 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>                                                                                                                                                                                                                                                                                         
     <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
-    <script src="/static/js/main.js"></script>
+    <script src="/static/js/main_tw.js"></script>
+    
 </html>
